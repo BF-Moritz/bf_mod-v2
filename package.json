@@ -1,0 +1,24 @@
+{
+  "name": "bf_mod-v2",
+  "version": "1.0.0",
+  "description": "A Bot for all plattforms",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BF-Moritz/bf_mod-v2.git"
+  },
+  "keywords": [
+    "bot",
+    "twitch",
+    "discord"
+  ],
+  "author": "BF_Moritz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BF-Moritz/bf_mod-v2/issues"
+  },
+  "homepage": "https://github.com/BF-Moritz/bf_mod-v2#readme"
+}
