@@ -104,4 +104,6 @@ dist
 .tern-port
 
 .idea
+
 src/config/credentials.json
+src/db/users/users.json
