@@ -105,5 +105,4 @@ dist
 
 .idea
 
-src/config/credentials.json
-src/db/users/users.json
+src/config/*/*.json

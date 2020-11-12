@@ -1,0 +1,39 @@
+#right {
+    background-color: #003C94;
+    width: 300px;
+    height: calc(100vh - 32px);
+    position: absolute;
+    top: 32px;
+    right: 0;
+    margin-right: -298px;
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 0.00, 0.75, 1.00);
+    z-index: -1;
+}
+
+#right.show-right {
+    margin-right: 0;
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 0.00, 0.75, 1.00);
+}
+
+.right-section {
+    width: 296px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(100vh - 36px);
+    margin: 2px;
+    overflow-x: hidden;
+    overflow-y: -moz-scrollbars-none;
+    background-color: #18202B;
+}
+
+.right-section.active {
+    display: block;
+}
+
+.right-section::-webkit-scrollbar {
+    display: none;
+}

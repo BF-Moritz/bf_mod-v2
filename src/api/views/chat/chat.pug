@@ -1,0 +1,44 @@
+html(lang="de")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+
+        title BF_Bot
+        link(rel='stylesheet', href='https://cdn.materialdesignicons.com/5.3.45/css/materialdesignicons.min.css')
+        link(rel='stylesheet', href='/chat/style/main.css')
+        link(rel='stylesheet', href='/chat/style/header.css')
+        link(rel='stylesheet', href='/chat/style/chat.css')
+        link(rel='stylesheet', href='/chat/style/newViewer.css')
+        link(rel='stylesheet', href='/chat/style/menu.css')
+        link(rel='stylesheet', href='/chat/style/right.css')
+    body
+        script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+        // Menu / Settings Background
+        #background-overlay
+        // Menu
+        #menu-overlay
+            #close-menu
+            include assets/menu
+        #header
+            include assets/header
+
+        #main-container
+            // Twitch Chat Window
+            #twitch-chat
+                include assets/twitchChat
+            // New Viewer Window
+            #new-viewer
+                include assets/newViewer
+            #twitch-chat-user-options
+                #twitch-chat-user-options-menu
+
+        // Right Window
+        #right
+            include assets/right
+
+        script(src='/chat/scripts/header.js')
+        script(src='/chat/scripts/right.js')
+        script(src='/chat/scripts/main.js')
+        script(src='/chat/scripts/chat.js')
+

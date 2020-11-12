@@ -1,0 +1,110 @@
+#header {
+    background-color: rgb(11, 16, 19);
+    width: 100vw;
+    height: 32px;
+    overflow: hidden;
+    color: rgb(220, 220, 220);
+}
+
+#open-close-btn {
+    font-size: 32px;
+    float: right;
+    margin-right: 0;
+    transition: margin-right 0.3s, transform 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 0.00, 0.75, 1.00);
+    cursor: pointer;
+}
+
+#open-close-btn.show-right {
+    margin-right: 240px;
+    transition: margin-right 0.3s, transform 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 0.00, 0.75, 1.00);
+    transform: rotate(180deg);
+}
+
+#right-title {
+    position: fixed;
+    right: -10px;
+    top: 2px;
+    font-size: 24px;
+    line-height: 26px;
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 0.00, 0.75, 1.00);
+    width: 0;
+    height: 28px;
+    opacity: 0;
+    padding-left: 10px;
+    border-left: rgba(255, 255, 255, 0.5) 1px solid;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#right-title.show-right {
+    opacity: 1;
+    width: 230px;
+}
+
+#right-title-dropdown-content {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 220px;
+    transform: translateX(-10px);
+}
+
+#right-title-dropdown-content div {
+    padding: 5px 10px;
+    display: block;
+    background-color: rgba(11, 16, 19, 0.8);
+}
+
+#right-title-dropdown-content div.active {
+    color: #0193DE;
+}
+
+#right-title:hover #right-title-dropdown-content {
+    display: block;
+}
+
+#right-title:hover #right-title-dropdown {
+    color: #5BC6F4;
+}
+
+#right-title-dropdown-content div:hover {
+    color: #5BC6F4;
+    background-color: rgb(11, 16, 19);
+}
+
+#header-settings-btn {
+    float: right;
+    font-size: 22px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 0.00, 0.75, 1.00);
+}
+
+#header-settings-btn:hover {
+    transform: rotate(90deg);
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 0.00, 0.75, 1.00);
+}
+
+.header-btns {
+    float: left;
+    margin: 2px;
+    height: 28px;
+    text-align: center;
+    font-size: 20px;
+    border-right: rgba(255, 255, 255, 0.5) 1px solid;
+    cursor: pointer;
+}
+
+.header-btns:hover {
+    color: #5BC6F4;
+}
+
+.header-btns p {
+    margin: 0 15px;
+    padding: 0;
+}

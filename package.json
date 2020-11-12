@@ -4,7 +4,8 @@
   "description": "A Bot for all plattforms",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,26 @@
   "bugs": {
     "url": "https://github.com/BF-Moritz/bf_mod-v2/issues"
   },
-  "homepage": "https://github.com/BF-Moritz/bf_mod-v2#readme"
+  "homepage": "https://github.com/BF-Moritz/bf_mod-v2#readme",
+  "dependencies": {
+    "@mdi/font": "^5.4.55",
+    "discord.js": "^12.2.0",
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "joi": "^17.2.1",
+    "monk": "^7.3.2",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.4",
+    "pug": "^3.0.0",
+    "request": "^2.88.2",
+    "socket.io-client": "^2.3.0",
+    "tmi.js": "^1.5.0"
+  },
+  "type": "module",
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ],
+    "delay": 100
+  }
 }
