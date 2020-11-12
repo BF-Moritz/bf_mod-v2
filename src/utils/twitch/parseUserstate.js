@@ -1,9 +1,9 @@
 export function isBroadcaster(userstate) {
-	return (userstate.badges !== null && userstate.badges.broadcaster === '1');
+	return userstate.badges !== null && userstate.badges.broadcaster === '1';
 }
 
 export function isVIP(userstate) {
-	return (userstate.badges !== null && userstate.badges.vip === '1');
+	return userstate.badges !== null && userstate.badges.vip === '1';
 }
 
 export function getSubCount(userstate) {

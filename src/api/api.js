@@ -1,9 +1,9 @@
 import express from 'express';
 import expressWS from 'express-ws';
-import {getCredentials} from '../config/credentials/credentialsConfig.js';
-import {APIRouter} from './apiRouter.js';
-import {ViewsRouter} from './viewsRouter.js';
-import {WSRouter} from './wsRouter.js';
+import { getCredentials } from '../config/credentials/credentialsConfig.js';
+import { APIRouter } from './apiRouter.js';
+import { ViewsRouter } from './viewsRouter.js';
+import { WSRouter } from './wsRouter.js';
 
 export class API {
 	constructor() {
@@ -13,7 +13,7 @@ export class API {
 		this.wsRouter = new WSRouter();
 		this.viewsRouter = new ViewsRouter(this.api);
 	}
-	
+
 	async initialize() {
 		let credentials = await getCredentials();
 		this.api.listen(credentials.api.port, () => {

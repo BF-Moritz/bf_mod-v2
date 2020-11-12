@@ -1,7 +1,7 @@
 import monk from 'monk';
 
-import {TwitchMessagesDB} from './twitch-messages/db.js';
-import {UsersDB} from './users/db.js';
+import { TwitchMessagesDB } from './twitch-messages/db.js';
+import { UsersDB } from './users/db.js';
 
 export class DB {
 	constructor(credentials) {
@@ -9,5 +9,4 @@ export class DB {
 		this.twitch_messages = new TwitchMessagesDB(this.db, credentials);
 		this.users = new UsersDB(this.db, credentials);
 	}
-	
 }

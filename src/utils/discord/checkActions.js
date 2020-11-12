@@ -1,3 +1,3 @@
 export async function checkActions() {
-	return true
+	return true;
 }

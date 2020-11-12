@@ -5,8 +5,11 @@ export async function getCredentials() {
 	return JSON.parse(credentialsData);
 }
 
-
 export async function setCredentials(credentials) {
-	let error = await fs.writeFileSync('./src/config/credentials/credentials.json', JSON.stringify(credentials, null, '  '), 'utf8');
+	let error = await fs.writeFileSync(
+		'./src/config/credentials/credentials.json',
+		JSON.stringify(credentials, null, '  '),
+		'utf8'
+	);
 	return error === null;
 }

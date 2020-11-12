@@ -1,5 +1,3 @@
 export default {
-	run: (name) => {
-
-	}
-}
+	run: (name) => {}
+};

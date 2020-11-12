@@ -1,6 +1,4 @@
-export function actionMessage() {
-	
-}
+export function actionMessage() {}
 
 export async function chatMessage(userstate, message) {
 	let messageObject = {
@@ -17,7 +15,7 @@ export async function chatMessage(userstate, message) {
 		message: message,
 		reply: null
 	};
-	
+
 	if (userstate.hasOwnProperty('reply-parent-display-name')) {
 		messageObject.reply = {};
 		messageObject.reply.parentDisplayName = userstate['reply-parent-display-name'];
@@ -34,42 +32,24 @@ export async function chatMessage(userstate, message) {
 	if (userstate.hasOwnProperty('reply-parent-user-login')) {
 		messageObject.reply.parentUserName = userstate['reply-parent-user-login'];
 	}
-	
+
 	return messageObject;
 }
 
-export async function cheerMessage() {
+export async function cheerMessage() {}
 
-}
+export async function hostedMessage() {}
 
-export async function hostedMessage() {
+export async function hostingMessage() {}
 
-}
+export async function messageMessage() {}
 
-export async function hostingMessage() {
+export async function raidedMessage() {}
 
-}
+export async function reSubMessage() {}
 
-export async function messageMessage() {
+export async function subGiftMessage() {}
 
-}
+export async function subMysteryGiftMessage() {}
 
-export async function raidedMessage() {
-
-}
-
-export async function reSubMessage() {
-
-}
-
-export async function subGiftMessage() {
-
-}
-
-export async function subMysteryGiftMessage() {
-
-}
-
-export async function subscriptionMessage() {
-
-}
+export async function subscriptionMessage() {}

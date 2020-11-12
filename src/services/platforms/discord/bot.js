@@ -1,18 +1,18 @@
 const discord = require('discord.js');
 const fsPromise = require('fs').promises;
 const path = require('path');
-const {checkEvents} = require('../../../utils/discord/checkEvents.js');
-const {checkCommands} = require('../../../utils/discord/checkCommands.js');
+const { checkEvents } = require('../../../utils/discord/checkEvents.js');
+const { checkCommands } = require('../../../utils/discord/checkCommands.js');
 
-const {getCredentials} = require('../../../config/credentials/credentialsConfig.js');
+const { getCredentials } = require('../../../config/credentials/credentialsConfig.js');
 
 module.exports.createDiscordBot = async () => {
 	let credentials = await getCredentials();
 	const discordBot = await new discord.Client();
-	
+
 	discordBot.commands = new Map();
 	discordBot.events = new Map();
-	
+
 	await discordBot.login(credentials.discord.token);
 	await registerCommands(discordBot, '/commands');
 	await registerEvents(discordBot, '/events');
@@ -32,10 +32,10 @@ async function registerCommands(discordBot, dir) {
 				try {
 					let cmdModule = require(path.join(__dirname, dir, file));
 					if (await checkCommands(cmdName, cmdModule)) {
-						let {aliases} = cmdModule;
+						let { aliases } = cmdModule;
 						discordBot.commands.set(cmdName, cmdModule.run);
 						if (aliases.length !== 0) {
-							aliases.forEach(alias => discordBot.commands.set(alias, cmdModule.run));
+							aliases.forEach((alias) => discordBot.commands.set(alias, cmdModule.run));
 						}
 					} else {
 						console.log(`Missing Config for Discord:${cmdName}`);

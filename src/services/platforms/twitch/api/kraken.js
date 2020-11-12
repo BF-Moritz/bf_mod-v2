@@ -1,17 +1,21 @@
 import fetch from 'node-fetch';
 import request from 'request';
-import {getCredentials} from '../../../../config/credentials/credentialsConfig.js';
+import { getCredentials } from '../../../../config/credentials/credentialsConfig.js';
 
 export async function getTwitchLogo(userID) {
 	let credentials = await getCredentials();
-	request.get('https://api.twitch.tv/kraken/users/' + userID, {
-		headers: {
-			'Accept': 'application/vnd.twitchtv.v5+json',
-			'Client-ID': credentials.twitch.bot.clientID
+	request.get(
+		'https://api.twitch.tv/kraken/users/' + userID,
+		{
+			headers: {
+				Accept: 'application/vnd.twitchtv.v5+json',
+				'Client-ID': credentials.twitch.bot.clientID
+			}
+		},
+		(err, res, body) => {
+			return JSON.parse(body).logo;
 		}
-	}, (err, res, body) => {
-		return JSON.parse(body).logo;
-	});
+	);
 }
 
 export async function getTwitchInfoFromUsername(username) {
@@ -19,7 +23,7 @@ export async function getTwitchInfoFromUsername(username) {
 	let res = null;
 	let response = await fetch('https://api.twitch.tv/kraken/users?login=' + username, {
 		headers: {
-			'Accept': 'application/vnd.twitchtv.v5+json',
+			Accept: 'application/vnd.twitchtv.v5+json',
 			'Client-ID': credentials.twitch.bot.clientID
 		}
 	});

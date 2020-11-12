@@ -21,21 +21,37 @@ export async function getTwitchGeneral() {
 }
 
 export async function setTwitchActions(actionsData) {
-	let error = await fs.writeFileSync('./src/config/twitch/actions.json', JSON.stringify(actionsData, null, '  '), 'utf8');
+	let error = await fs.writeFileSync(
+		'./src/config/twitch/actions.json',
+		JSON.stringify(actionsData, null, '  '),
+		'utf8'
+	);
 	return error === null;
 }
 
 export async function setTwitchCommands(commandsData) {
-	let error = await fs.writeFileSync('./src/config/twitch/commands.json', JSON.stringify(commandsData, null, '  '), 'utf8');
+	let error = await fs.writeFileSync(
+		'./src/config/twitch/commands.json',
+		JSON.stringify(commandsData, null, '  '),
+		'utf8'
+	);
 	return error === null;
 }
 
 export async function setTwitchEvents(eventsData) {
-	let error = await fs.writeFileSync('./src/config/twitch/events.json', JSON.stringify(eventsData, null, '  '), 'utf8');
+	let error = await fs.writeFileSync(
+		'./src/config/twitch/events.json',
+		JSON.stringify(eventsData, null, '  '),
+		'utf8'
+	);
 	return error === null;
 }
 
 export async function setTwitchGeneral(generalData) {
-	let error = await fs.writeFileSync('./src/config/twitch/general.json', JSON.stringify(generalData, null, '  '), 'utf8');
+	let error = await fs.writeFileSync(
+		'./src/config/twitch/general.json',
+		JSON.stringify(generalData, null, '  '),
+		'utf8'
+	);
 	return error === null;
 }

@@ -13,7 +13,7 @@ export class TwitchMessagesDB {
 	constructor(db, credentials) {
 		this.db = db.get(credentials.dbs.twitch_messages.name);
 	}
-	
+
 	async addMessage(channel, type, message) {
 		try {
 			const messageObject = {
@@ -24,14 +24,14 @@ export class TwitchMessagesDB {
 				index: await this.countMessages(),
 				date: Date.now()
 			};
-			const {value} = await messageSchema.validate(messageObject);
+			const { value } = await messageSchema.validate(messageObject);
 			return await this.db.insert(value);
 		} catch (err) {
 			console.error(err);
 			return null;
 		}
 	}
-	
+
 	async getAllMessages() {
 		try {
 			return await this.db.find({});
@@ -40,10 +40,10 @@ export class TwitchMessagesDB {
 			return null;
 		}
 	}
-	
+
 	async getAllMessagesByChannel(channel) {
 		try {
-			const messages = await this.db.find({channel: channel});
+			const messages = await this.db.find({ channel: channel });
 			if (!messages) {
 				return null;
 			}
@@ -53,10 +53,10 @@ export class TwitchMessagesDB {
 			return null;
 		}
 	}
-	
+
 	async getMessageByIndex(index) {
 		try {
-			const message = await this.db.findOne({index: index});
+			const message = await this.db.findOne({ index: index });
 			if (!message) {
 				return null;
 			}
@@ -66,20 +66,20 @@ export class TwitchMessagesDB {
 			return null;
 		}
 	}
-	
+
 	async deleteMessage(index) {
 		try {
-			const message = await this.db.findOne({index: index});
+			const message = await this.db.findOne({ index: index });
 			if (!message) {
 				return null;
 			}
-			return await this.db.update({'_id': message['_id']}, {deleted: true});
+			return await this.db.update({ _id: message['_id'] }, { deleted: true });
 		} catch (err) {
 			console.error(err);
 			return null;
 		}
 	}
-	
+
 	async countMessages() {
 		try {
 			return await this.db.count({});

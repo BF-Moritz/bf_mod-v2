@@ -18,13 +18,11 @@ const rightTitleDropDownContent = document.getElementById('right-title-dropdown-
 const rightTitleDropdown = document.getElementById('right-title-dropdown');
 
 function toggleRight() {
-	
 	if (rightWrapper.classList.contains('show-right')) {
 		rightWrapper.classList.remove('show-right');
 		mainWrapper.classList.remove('show-right');
 		openCloseBtn.classList.remove('show-right');
 		rightTitle.classList.remove('show-right');
-		
 	} else {
 		rightWrapper.classList.add('show-right');
 		mainWrapper.classList.add('show-right');

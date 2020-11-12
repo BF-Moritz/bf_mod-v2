@@ -1,4 +1,4 @@
-import {services} from '../../../../app.js';
+import { services } from '../../../../app.js';
 
 export default {
 	run: async (channel, username, self) => {

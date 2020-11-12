@@ -1,11 +1,11 @@
 #new-viewer {
-    background-color: #0193DE;
-    grid-area: newViewer;
+	background-color: #0193de;
+	grid-area: newViewer;
 }
 
 #new-viewer-wrapper {
-    width: calc(100% - 4px);
-    height: 148px;
-    margin: 0 2px 2px 2px;
-    background-color: #18202B;
+	width: calc(100% - 4px);
+	height: 148px;
+	margin: 0 2px 2px 2px;
+	background-color: #18202b;
 }

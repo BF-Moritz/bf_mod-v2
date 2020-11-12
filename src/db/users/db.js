@@ -31,7 +31,7 @@ export class UsersDB {
 			console.error(err);
 		}
 	}
-	
+
 	async addUser(twitch, discord) {
 		try {
 			let newUser = {};
@@ -41,14 +41,14 @@ export class UsersDB {
 			if (discord !== null && discord !== undefined) {
 				newUser.discord = discord;
 			}
-			const {value} = await userSchema.validate(newUser);
+			const { value } = await userSchema.validate(newUser);
 			return await this.db.insert(value);
 		} catch (err) {
 			console.error(err);
 			return null;
 		}
-	};
-	
+	}
+
 	async getUserByID(id) {
 		try {
 			const user = await this.db.findOne({
@@ -62,11 +62,11 @@ export class UsersDB {
 			console.error(err);
 			return null;
 		}
-	};
-	
+	}
+
 	async getUserByTwitchID(id) {
 		try {
-			const user = await this.db.findOne({'twitch.id': id.toString()});
+			const user = await this.db.findOne({ 'twitch.id': id.toString() });
 			if (!user) {
 				return null;
 			}
@@ -75,11 +75,11 @@ export class UsersDB {
 			console.error(err);
 			return null;
 		}
-	};
-	
+	}
+
 	async getUserByDiscordID(id) {
 		try {
-			const user = await this.db.findOne({'discord.id': id.toString()});
+			const user = await this.db.findOne({ 'discord.id': id.toString() });
 			if (!user) {
 				return null;
 			}
@@ -88,28 +88,28 @@ export class UsersDB {
 			console.error(err);
 			return null;
 		}
-	};
-	
+	}
+
 	async updateUser(updateUser) {
 		try {
-			const user = await this.db.findOne({_id: updateUser['_id']});
+			const user = await this.db.findOne({ _id: updateUser['_id'] });
 			if (!user) {
 				return null;
 			}
-			return await this.db.update({_id: updateUser['_id']}, {$set: updateUser});
+			return await this.db.update({ _id: updateUser['_id'] }, { $set: updateUser });
 		} catch (err) {
 			console.error(err);
 			return null;
 		}
-	};
-	
+	}
+
 	async deleteUser(id) {
 		try {
-			await this.db.remove({_id: id});
+			await this.db.remove({ _id: id });
 			return true;
 		} catch (err) {
 			console.error(err);
 			return null;
 		}
-	};
+	}
 }

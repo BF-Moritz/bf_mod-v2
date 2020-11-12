@@ -1,3 +1,1 @@
-export async function checkEvents() {
-
-}
+export async function checkEvents() {}

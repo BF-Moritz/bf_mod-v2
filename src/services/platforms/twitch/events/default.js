@@ -1,6 +1,4 @@
 export default {
-	run: async () => {
-	
-	},
+	run: async () => {},
 	clients: ['bf_mod']
 };

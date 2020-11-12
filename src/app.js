@@ -1,4 +1,4 @@
-import {Services} from './services/services.js';
+import { Services } from './services/services.js';
 
 export let services;
 

@@ -1,213 +1,213 @@
 #twitch-chat {
-    background-color: #0193DE;
-    grid-area: chat;
-    height: 100%;
-    overflow: hidden;
+	background-color: #0193de;
+	grid-area: chat;
+	height: 100%;
+	overflow: hidden;
 }
 
 #twitch-chat-wrapper {
-    margin: 2px;
-    width: calc(100% - 4px);
-    height: calc(100% - 36px);
-    background-color: #18202B;
-    overflow-y: scroll;
-    overflow-x: hidden;
+	margin: 2px;
+	width: calc(100% - 4px);
+	height: calc(100% - 36px);
+	background-color: #18202b;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .twitch-message-container {
-    padding: 2px;
-    display: block;
+	padding: 2px;
+	display: block;
 }
 
 .twitch-message-container:hover .twitch-message {
-    background-color: rgba(11, 16, 19, 0.9);
+	background-color: rgba(11, 16, 19, 0.9);
 }
 
 .twitch-message {
-    display: grid;
-    width: 100%;
-    border-radius: 15px;
-    background-color: rgba(11, 16, 19, 0.8);
-    min-height: 10px;
-    grid-template-columns: 70px 1fr;
-    color: white;
-    min-width: 410px;
+	display: grid;
+	width: 100%;
+	border-radius: 15px;
+	background-color: rgba(11, 16, 19, 0.8);
+	min-height: 10px;
+	grid-template-columns: 70px 1fr;
+	color: white;
+	min-width: 410px;
 }
 
 .twitch-message-left {
-    width: 100%;
+	width: 100%;
 }
 
 .twitch-message-right {
-    width: 100%;
+	width: 100%;
 }
 
 .twitch-message-profile-picture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 10px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin: 10px;
 }
 
 .twitch-message-header {
-    display: flex;
-    margin: 6px 10px 5px 5px;
-    font-size: 24px;
-    width: calc(100% - 15px);
+	display: flex;
+	margin: 6px 10px 5px 5px;
+	font-size: 24px;
+	width: calc(100% - 15px);
 }
 
 .twitch-message-badge {
-    width: 25px;
-    height: 25px;
-    margin: 2px 2px 2px 0;
-    border-radius: 10%;
+	width: 25px;
+	height: 25px;
+	margin: 2px 2px 2px 0;
+	border-radius: 10%;
 }
 
 .twitch-message-header-name {
-    margin-right: 8px;
-    cursor: pointer;
+	margin-right: 8px;
+	cursor: pointer;
 }
 
 .twitch-message-header-badge {
-    width: auto;
-    height: 20px;
-    border-radius: 2px;
-    margin-right: 8px;
-    margin-top: 3px;
+	width: auto;
+	height: 20px;
+	border-radius: 2px;
+	margin-right: 8px;
+	margin-top: 3px;
 }
 
 .twitch-message-header-flag {
-    width: auto;
-    height: 32px;
-    border-radius: 15px;
-    margin-top: -3px;
+	width: auto;
+	height: 32px;
+	border-radius: 15px;
+	margin-top: -3px;
 }
 
 .twitch-message-header-time {
-    margin:3px 0 0 auto;
-    font-size: 14px;
+	margin: 3px 0 0 auto;
+	font-size: 14px;
 }
 
 .twitch-message-header-pin {
-    margin: 0px 13px 0 10px;
-    width: auto;
-    height: 18px;
-    border-radius: 50%;
+	margin: 0px 13px 0 10px;
+	width: auto;
+	height: 18px;
+	border-radius: 50%;
 }
 
 .twitch-message-text {
-    margin: 0px 10px 10px 5px;
-    font-size: 16px;
+	margin: 0px 10px 10px 5px;
+	font-size: 16px;
 }
 
 .twitch-message-text-block {
-    line-height: 2;
-    margin: 10px 0;
-    word-break: break-word;
+	line-height: 2;
+	margin: 10px 0;
+	word-break: break-word;
 }
 
 .twitch-message-emote img {
-    max-width: 30px;
-    margin: -10px 1px;
+	max-width: 30px;
+	margin: -10px 1px;
 }
 
 #twitch-chat-input {
-    margin: 2px;
-    width: calc(100% - 4px);
-    height: 32px;
-    background-color: #18202B;
+	margin: 2px;
+	width: calc(100% - 4px);
+	height: 32px;
+	background-color: #18202b;
 }
 
 #twitch-chat-input form {
-    margin: 0;
-    width: 100%;
-    color: white;
+	margin: 0;
+	width: 100%;
+	color: white;
 }
 
 #twitch-chat-input form *:focus {
-    outline: none;
+	outline: none;
 }
 
 #twitch-chat-input-selector {
-    width: 140px;
-    margin: 0;
-    padding: 0 0 0 10px;
-    border: none;
-    height: 100%;
-    background-color: rgba(11, 16, 19, 0.8);
+	width: 140px;
+	margin: 0;
+	padding: 0 0 0 10px;
+	border: none;
+	height: 100%;
+	background-color: rgba(11, 16, 19, 0.8);
 }
 
 #twitch-chat-input-field {
-    width: calc(100% - 155px);
-    margin: 0 0 0 155px;
-    padding: 0 10px;
-    border: none;
-    height: 100%;
-    background-color: rgba(11, 16, 19, 0.8);
-    color: white;
+	width: calc(100% - 155px);
+	margin: 0 0 0 155px;
+	padding: 0 10px;
+	border: none;
+	height: 100%;
+	background-color: rgba(11, 16, 19, 0.8);
+	color: white;
 }
 
 #select-current-account {
-    position: fixed;
-    font-size: 24px;
-    line-height: 26px;
-    transition: 0.3s;
-    transition-timing-function: cubic-bezier(0.25, 0.00, 0.75, 1.00);
-    width: 150px;
-    height: 32px;
-    opacity: 1;
-    cursor: pointer;
-    display: inline-block;
-    bottom: 152px;
+	position: fixed;
+	font-size: 24px;
+	line-height: 26px;
+	transition: 0.3s;
+	transition-timing-function: cubic-bezier(0.25, 0, 0.75, 1);
+	width: 150px;
+	height: 32px;
+	opacity: 1;
+	cursor: pointer;
+	display: inline-block;
+	bottom: 152px;
 }
 
 #twitch-chat-input-selector-content {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    width: 150px;
+	display: none;
+	position: fixed;
+	z-index: 1;
+	width: 150px;
 }
 
 #twitch-chat-input-selector-content div {
-    padding: 5px 10px;
-    display: block;
-    background-color: rgba(11, 16, 19, 0.8);
+	padding: 5px 10px;
+	display: block;
+	background-color: rgba(11, 16, 19, 0.8);
 }
 
 #twitch-chat-input-selector-content div.active {
-    color: #0193DE;
+	color: #0193de;
 }
 
 #select-current-account:hover #twitch-chat-input-selector-content {
-    display: block;
+	display: block;
 }
 
 #select-current-account:hover #twitch-chat-input-selector {
-    color: #5BC6F4;
+	color: #5bc6f4;
 }
 
 #twitch-chat-input-selector-content div:hover {
-    color: #5BC6F4;
-    background-color: rgb(11, 16, 19);
+	color: #5bc6f4;
+	background-color: rgb(11, 16, 19);
 }
 
 #twitch-chat-user-options {
-    width: calc(100% - 4px);
-    overflow: hidden;
-    height: calc(100% - 36px);
-    grid-area: chat;
-    background-color: rgba(11, 16, 19, 0.3);
-    z-index: 1;
-    display: none;
-    justify-self: center;
+	width: calc(100% - 4px);
+	overflow: hidden;
+	height: calc(100% - 36px);
+	grid-area: chat;
+	background-color: rgba(11, 16, 19, 0.3);
+	z-index: 1;
+	display: none;
+	justify-self: center;
 }
 
 #twitch-chat-user-options-menu {
-    max-width: calc(100% - 20px);
-    width: 800px;
-    height: 80%;
-    margin: 0 auto;
-    background-color: green;
-    align-self: center;
-    z-index: 2;
+	max-width: calc(100% - 20px);
+	width: 800px;
+	height: 80%;
+	margin: 0 auto;
+	background-color: green;
+	align-self: center;
+	z-index: 2;
 }

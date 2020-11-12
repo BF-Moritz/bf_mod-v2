@@ -1,7 +1,6 @@
 import Discord from 'discord.js';
-import {services} from '../../../../../app.js'
-import {getDiscordChannels, getDiscordGeneral} from '../../../../../config/discord/discordConfig.js';
-
+import { services } from '../../../../../app.js';
+import { getDiscordChannels, getDiscordGeneral } from '../../../../../config/discord/discordConfig.js';
 
 export default {
 	run: async (messageObject) => {
@@ -12,7 +11,7 @@ export default {
 		embed.setAuthor(user.twitch.displayName, user.twitch.logo, 'https://www.twitch.tv/' + user.twitch.name);
 		embed.setTimestamp(messageObject.date);
 		embed.addField('Message', messageObject.message.message);
-		let twitchLogChannel = services.dcbot.client.channels.cache.find(channel => {
+		let twitchLogChannel = services.dcbot.client.channels.cache.find((channel) => {
 			return channel.id === discordChannels.logChannel.id;
 		});
 		if (twitchLogChannel !== null && discordGeneral.twitchLog) {
@@ -21,4 +20,4 @@ export default {
 			console.log(embed);
 		}
 	}
-}
+};

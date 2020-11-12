@@ -1,3 +1,1 @@
-export async function checkCommands() {
-
-}
+export async function checkCommands() {}

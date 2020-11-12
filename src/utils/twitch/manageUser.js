@@ -1,14 +1,13 @@
-import {services} from '../../app.js';
-import {getTwitchInfoFromUsername} from '../../services/platforms/twitch/api/kraken.js';
-import {getSubCount, getSubTier, isBroadcaster, isVIP} from './parseUserstate.js';
+import { services } from '../../app.js';
+import { getTwitchInfoFromUsername } from '../../services/platforms/twitch/api/kraken.js';
+import { getSubCount, getSubTier, isBroadcaster, isVIP } from './parseUserstate.js';
 
 export async function manageUser(userstate) {
-	
 	let info = await getTwitchInfoFromUsername(userstate.username);
 	if (info === null) {
 		return;
 	}
-	
+
 	let twitch = {
 		name: userstate.username.toString(),
 		displayName: userstate['display-name'].toString(),
