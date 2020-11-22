@@ -43,6 +43,9 @@ const twitchBadges = {
 	},
 	partner: {
 		image: 'https://static-cdn.jtvnw.net/badges/v1/d12a2e27-16f6-41d0-ab77-b780518f00a3/1'
+	},
+	vip: {
+		image: 'https://static-cdn.jtvnw.net/badges/v1/b817aba4-fad8-49e2-b88a-7cc744dfa6ec/1'
 	}
 };
 
@@ -76,7 +79,6 @@ twitchChatWrapper.addEventListener('scroll', () => {
 twitchChatUserOptions.addEventListener('click', () => {
 	twitchChatUserOptions.style.display = 'none';
 	twitchChatUserOptionsMenu.style.display = 'none';
-	console.log('hi');
 });
 
 twitchChatUserOptionsMenu.addEventListener('click', (event) => {
@@ -149,7 +151,6 @@ $(document).ready(() => {
 					}
 					break;
 				case 'POST':
-					console.log(data);
 					switch (data.type) {
 						case 'messages':
 							if (twitchChatWrapper.childElementCount > 0) {
@@ -160,6 +161,9 @@ $(document).ready(() => {
 							break;
 						case 'user-information':
 							await addUserInformation(data.params);
+							break;
+						case 'action-response':
+							await handleActionResponse(data.params);
 							break;
 					}
 					break;
@@ -197,8 +201,6 @@ async function addMessages(params) {
 }
 
 async function addMessage(message) {
-	console.log(message.user._id);
-
 	let emotes = [];
 
 	for (let emote in message.message.emotes) {
@@ -235,6 +237,9 @@ async function addMessage(message) {
 
 	let newMessage = document.createElement('div');
 	newMessage.className = 'twitch-message';
+	if (message.deleted) {
+		newMessage.classList.add('twitch-message-deleted');
+	}
 
 	let newMessageLeft = document.createElement('div');
 	newMessageLeft.className = 'twitch-message-left';
@@ -291,6 +296,29 @@ async function addMessage(message) {
 	newMessageHeadTime.className = 'twitch-message-header-time';
 	newMessageHeadTime.innerText = convertTimestampToString(message.date);
 	newMessageHead.appendChild(newMessageHeadTime);
+
+	let newMessageHeadDelete = document.createElement('span');
+	newMessageHeadDelete.className = 'mdi mdi-delete-circle-outline chat-msg-delete-btn';
+
+	if (!message.deleted) {
+		newMessageHeadDelete.addEventListener('click', () => {
+			send({
+				method: 'POST',
+				type: 'action',
+				params: {
+					action: 'deletemessage',
+					id: message._id,
+					platform: 'twitch'
+				}
+			});
+			newMessage.classList.add('twitch-message-deleted');
+			newMessageHeadDelete.classList.add('disabled');
+		});
+	} else {
+		newMessageHeadDelete.classList.add('disabled');
+	}
+
+	newMessageHead.appendChild(newMessageHeadDelete);
 	newMessageRight.appendChild(newMessageHead);
 
 	let newMessageTextBlock = document.createElement('div');
@@ -454,10 +482,9 @@ async function getUserInformation(id) {
 }
 
 async function addUserInformation(params) {
-	console.log(params.user);
 	if (canReceiveUserInformation) {
-		// showMenu()
-		twitchChatUserOptionsMenu.style.display = 'block';
+		await setUserOptions(params.user);
+		twitchChatUserOptionsMenu.style.display = 'grid';
 	} else {
 		twitchChatUserOptions.style.display = 'none';
 	}

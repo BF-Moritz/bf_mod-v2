@@ -18,9 +18,12 @@ export async function manageUser(userstate) {
 		sub: userstate.subscriber,
 		subCount: getSubCount(userstate),
 		subTier: getSubTier(userstate),
-		color: userstate.color.toString(),
+		color: userstate.color ? userstate.color.toString() : null,
 		createdAt: info.createdAt.toString(),
-		logo: info.logo.toString()
+		logo: info.logo.toString(),
+		banned: false,
+		timeouted: false,
+		timeoutTime: Date.now()
 	};
 	let user = await services.db.users.getUserByTwitchID(userstate['user-id']);
 	if (user !== null) {
@@ -48,6 +51,5 @@ const checkUserData = async (twitchID, twitch) => {
 	}
 	if (updated) {
 		let user = await services.db.users.updateUser(currentUserData);
-		console.log(user);
 	}
 };

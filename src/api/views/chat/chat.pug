@@ -12,6 +12,7 @@ html(lang="de")
         link(rel='stylesheet', href='/chat/style/newViewer.css')
         link(rel='stylesheet', href='/chat/style/menu.css')
         link(rel='stylesheet', href='/chat/style/right.css')
+        link(rel='stylesheet', href='/chat/style/userOptions.css')
     body
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
         // Menu / Settings Background
@@ -30,8 +31,9 @@ html(lang="de")
             // New Viewer Window
             #new-viewer
                 include assets/newViewer
+            // Twitch user Options
             #twitch-chat-user-options
-                #twitch-chat-user-options-menu
+                include assets/userOptions
 
         // Right Window
         #right
@@ -41,4 +43,5 @@ html(lang="de")
         script(src='/chat/scripts/right.js')
         script(src='/chat/scripts/main.js')
         script(src='/chat/scripts/chat.js')
+        script(src="/chat/scripts/userOptions.js")
 

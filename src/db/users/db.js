@@ -13,7 +13,10 @@ const userSchema = Joi.object({
 		subTier: Joi.number().default(0),
 		color: Joi.string(),
 		image: Joi.string().uri(),
-		createdAt: Joi.date().required()
+		createdAt: Joi.date().required(),
+		banned: Joi.boolean().required(),
+		timeouted: Joi.boolean().required(),
+		timeoutTime: Joi.date().required()
 	}),
 	discord: Joi.object({
 		name: Joi.string().required(),
@@ -57,7 +60,7 @@ export class UsersDB {
 			if (!user) {
 				return null;
 			}
-			return user;
+			return await this.checkUser(user);
 		} catch (err) {
 			console.error(err);
 			return null;
@@ -70,7 +73,7 @@ export class UsersDB {
 			if (!user) {
 				return null;
 			}
-			return user;
+			return await this.checkUser(user);
 		} catch (err) {
 			console.error(err);
 			return null;
@@ -83,7 +86,7 @@ export class UsersDB {
 			if (!user) {
 				return null;
 			}
-			return user;
+			return await this.checkUser(user);
 		} catch (err) {
 			console.error(err);
 			return null;
@@ -96,6 +99,7 @@ export class UsersDB {
 			if (!user) {
 				return null;
 			}
+			await this.checkUser(user);
 			return await this.db.update({ _id: updateUser['_id'] }, { $set: updateUser });
 		} catch (err) {
 			console.error(err);
@@ -111,5 +115,18 @@ export class UsersDB {
 			console.error(err);
 			return null;
 		}
+	}
+
+	async checkUser(user) {
+		// TODO if timeout rum, set timeout false
+		if (user.twitch !== null && user.twitch !== undefined) {
+			if (user.twitch.timeouted) {
+				if (user.twitch.timeoutTime < Date.now()) {
+					user.twitch.timeouted = false;
+					await this.db.update({ _id: user['_id'] }, { $set: user });
+				}
+			}
+		}
+		return user;
 	}
 }

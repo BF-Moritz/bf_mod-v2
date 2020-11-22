@@ -54,6 +54,19 @@ export class TwitchMessagesDB {
 		}
 	}
 
+	async getMessageByID(id) {
+		try {
+			const message = await this.db.findOne({ _id: id });
+			if (!message) {
+				return null;
+			}
+			return message;
+		} catch (err) {
+			console.error(err);
+			return null;
+		}
+	}
+
 	async getMessageByIndex(index) {
 		try {
 			const message = await this.db.findOne({ index: index });
@@ -73,7 +86,7 @@ export class TwitchMessagesDB {
 			if (!message) {
 				return null;
 			}
-			return await this.db.update({ _id: message['_id'] }, { deleted: true });
+			return await this.db.update({ _id: message['_id'] }, { $set: { deleted: true } });
 		} catch (err) {
 			console.error(err);
 			return null;

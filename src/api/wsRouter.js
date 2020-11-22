@@ -114,7 +114,27 @@ export class WSRouter {
 		}
 	}
 
-	async wsPostAction(ws, params) {}
+	async wsPostAction(ws, params) {
+		if (params.platform === 'twitch') {
+			if (!services.streamer.actions.has(params.action)) {
+				console.error(`No Action named <${params.action}>!`);
+				return;
+			}
+			let result = await services.streamer.actions.get(params.action)(params);
+			if (result !== null && typeof result === 'object') {
+				send(ws, {
+					method: 'POST',
+					type: 'action-response',
+					params: {
+						result: result,
+						action: params.action,
+						id: params.id
+					}
+				});
+			}
+		}
+		await services.api;
+	}
 
 	async wsAddViewer(viewer) {
 		// TODO add viewer to viewer list and send whole list to all websockets

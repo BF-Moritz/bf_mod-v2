@@ -6,7 +6,6 @@ const twitchChatInputField = document.getElementById('twitch-chat-input-field');
 twitchChatInputForm.addEventListener('submit', (event) => {
 	event.preventDefault();
 	const account = twitchChatInputSelector.innerText;
-	console.log(account);
 	send({
 		method: 'POST',
 		type: 'message',

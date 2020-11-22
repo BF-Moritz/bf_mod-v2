@@ -1,6 +1,6 @@
 export default {
 	run: async (channel, userstate, message, args) => {
-		console.log('dnhagtdhjagbfhafgba');
+		console.log('cola command executed');
 	},
 	aliases: ['bfmoricola'],
 	description: 'cola',

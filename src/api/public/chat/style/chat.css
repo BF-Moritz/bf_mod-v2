@@ -196,7 +196,8 @@
 	overflow: hidden;
 	height: calc(100% - 36px);
 	grid-area: chat;
-	background-color: rgba(11, 16, 19, 0.3);
+	/* background-color: rgba(1, 147, 222, 0.4); */
+	background-color: rgba(76, 179, 230, 0.4);
 	z-index: 1;
 	display: none;
 	justify-self: center;
@@ -210,4 +211,27 @@
 	background-color: green;
 	align-self: center;
 	z-index: 2;
+}
+
+.chat-msg-delete-btn {
+	font-size: 18px;
+	margin-top: 3px;
+	margin-left: 3px;
+	cursor: pointer;
+}
+
+.chat-msg-delete-btn.disabled {
+	cursor: not-allowed;
+}
+
+.chat-msg-delete-btn:hover {
+	color: red;
+}
+
+.chat-msg-delete-btn.disabled:hover {
+	color: white;
+}
+
+.twitch-message-deleted {
+	opacity: 0.4;
 }
