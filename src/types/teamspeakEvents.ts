@@ -1,0 +1,16 @@
+export type TeamspeakEventType =
+	| 'error'
+	| 'ready'
+	| 'close'
+	| 'flooding'
+	| 'debug'
+	| 'clientconnect'
+	| 'clientdisconnect'
+	| 'tokenused'
+	| 'textmessage'
+	| 'clientmoved'
+	| 'serveredit'
+	| 'channeledit'
+	| 'channelcreate'
+	| 'channelmoved'
+	| 'channeldelete';

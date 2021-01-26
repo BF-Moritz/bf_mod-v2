@@ -106,3 +106,4 @@ dist
 .idea
 
 src/config/*/*.json
+*.js
