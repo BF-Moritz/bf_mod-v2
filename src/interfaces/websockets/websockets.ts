@@ -5,8 +5,8 @@ export interface ConnectDataInterface {
 }
 
 export interface GetMessagesDataInterface {
-	count: number | null;
-	index: number | null;
+	count?: number;
+	index?: number;
 }
 
 export interface GetViewerDataInterface {}

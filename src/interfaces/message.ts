@@ -2,7 +2,7 @@ import { BadgeInfo, Badges, Userstate } from 'tmi.js';
 import { UserInterface } from './user';
 
 export interface MessageDBInterface {
-	id?: string;
+	_id?: string;
 	channel: string;
 	type: string;
 	message: MessageObjectInterface;

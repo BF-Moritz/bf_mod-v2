@@ -1,14 +1,16 @@
 import fetch from 'node-fetch';
+import { services } from '../../../../app';
 import { getCredentials } from '../../../../config/credentials/credentialsConfig';
+import { CurrentlyPlayingInterface } from '../../../../interfaces/spotify/currentlyPlaying.api';
 
 export default class CurrentPlayback {
 	interval: NodeJS.Timeout | null;
 	timedelta: number;
-	info: any; // TODO
+	info: CurrentlyPlayingInterface | null;
 
 	constructor() {
 		this.interval = null;
-		this.timedelta = 10 * 1000;
+		this.timedelta = 5 * 1000;
 		this.info = null;
 	}
 
@@ -33,9 +35,16 @@ export default class CurrentPlayback {
 
 				if (response.status === 200) {
 					const json = await response.json();
-					this.info = json;
-				} else {
+					this.info = json as CurrentlyPlayingInterface;
+				} else if (response.status === 204) {
 					this.info = null;
+				} else if (response.status === 401) {
+					const err = await services.spotify.refreshToken();
+					if (err !== null) {
+						services.logger.error('Refresh your Spotify login on: http://localhost:5000/views/auth', err);
+					}
+				} else {
+					services.logger.error('[Spotify] error on getting current Playback:', response);
 				}
 			}
 		}, this.timedelta);

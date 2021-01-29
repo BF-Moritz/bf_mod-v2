@@ -5,8 +5,9 @@
 	"main": "app.js",
 	"scripts": {
 		"test": "test",
-		"dev": "node src/app.js",
-		"build": "tsc"
+		"dev": "nodemon src/app.js",
+		"build": "tsc",
+		"clear": "find src/ -name '*.js' -type f -delete"
 	},
 	"repository": {
 		"type": "git",

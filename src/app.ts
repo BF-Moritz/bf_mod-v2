@@ -5,7 +5,7 @@ export let services: Services;
 
 const loggerLevel = 'debug';
 
-async function main() {
+async function main(): Promise<void> {
 	// Initialize Services
 	const credentials = await getCredentials();
 

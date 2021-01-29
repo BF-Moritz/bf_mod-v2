@@ -77,6 +77,14 @@ export class WSRouter {
 				};
 				break;
 
+			case 'bf_mod':
+				data = {
+					method: 'CONNECT',
+					type: 'CONNECT',
+					params: {}
+				};
+				break;
+
 			case 'bf-activity':
 				data = {
 					method: 'CONNECT',
@@ -117,10 +125,10 @@ export class WSRouter {
 	wsGetMessages = async (ws: ws, params: GetMessagesDataInterface): Promise<void> => {
 		let count = 50;
 		let index = ((await services.db.twitchMessages.countMessages()) || 0) - 1;
-		if (params !== null && params.count !== null) {
+		if (params !== null && params.count !== undefined) {
 			count = params.count;
 		}
-		if (params !== null && params.index !== null) {
+		if (params !== null && params.index !== undefined) {
 			index = Math.min(params.index, index);
 		}
 

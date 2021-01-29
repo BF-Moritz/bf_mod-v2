@@ -8,7 +8,6 @@ export default {
 			let res;
 			for (let channel of services.streamer.channels) {
 				try {
-					console.log(message.message);
 					res = await services.streamer.client.deletemessage(channel, message.message.id);
 				} catch (err) {
 					res = { error: err };

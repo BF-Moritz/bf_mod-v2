@@ -7,6 +7,7 @@ export default class Logger {
 		this.level = levels.findIndex((l) => l === level);
 	}
 
+	// TODO add time
 	error(...args: any) {
 		if (this.level >= 1) {
 			console.error('[ERROR]', ...args);

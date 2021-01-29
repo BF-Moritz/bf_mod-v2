@@ -45,10 +45,9 @@ export class Services {
 		const discordGeneral = await getDiscordGeneral();
 		const twitchGeneral = await getTwitchGeneral();
 
-		// MongoDB
-
 		// Twitch Bot Account
 		if (twitchGeneral.activated) {
+			this.logger.info('[services] Twitch bot');
 			await this.bot.importCommands();
 			await this.bot.importEvents();
 			await this.bot.importActions();
@@ -57,6 +56,7 @@ export class Services {
 
 		// Twitch Streamer Account
 		if (twitchGeneral.activated) {
+			this.logger.info('[services] Twitch streamer');
 			await this.streamer.importCommands();
 			await this.streamer.importEvents();
 			await this.streamer.importActions();
@@ -65,6 +65,7 @@ export class Services {
 
 		// Discord Bot Account
 		if (discordGeneral.activated) {
+			this.logger.info('[services] Discord bot');
 			await this.dcbot.importCommands();
 			await this.dcbot.importEvents();
 			await this.dcbot.importActions();
@@ -73,12 +74,10 @@ export class Services {
 
 		// Teamspeak Bot
 		if (teamspeakGeneral.activated) {
+			this.logger.info('[services] Teamspeak bot');
 			await this.teamspeak.connect();
 			// await this.teamspeak.importEvents();
 		}
-
-		// await this.spotify.setCredentials(credentials.spotify.apiToken);
-		// this.spotify.getCurrentTrack();
 
 		// API & Websocket
 		await this.api.initialize();
