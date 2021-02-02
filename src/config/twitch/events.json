@@ -1,0 +1,137 @@
+{
+	"action": {
+		"enabled": true
+	},
+	"anongiftpaidupgrade": {
+		"enabled": true
+	},
+	"automod": {
+		"enabled": true
+	},
+	"ban": {
+		"enabled": true
+	},
+	"chat": {
+		"enabled": true
+	},
+	"cheer": {
+		"enabled": true
+	},
+	"clearchat": {
+		"enabled": true
+	},
+	"connected": {
+		"enabled": false
+	},
+	"connecting": {
+		"enabled": false
+	},
+	"default": {
+		"enabled": true
+	},
+	"disconnected": {
+		"enabled": true
+	},
+	"emoteonly": {
+		"enabled": true
+	},
+	"emotesets": {
+		"enabled": true
+	},
+	"followersonly": {
+		"enabled": true
+	},
+	"giftpaidupgrade": {
+		"enabled": true
+	},
+	"hosted": {
+		"enabled": true
+	},
+	"hosting": {
+		"enabled": true
+	},
+	"join": {
+		"enabled": true
+	},
+	"logon": {
+		"enabled": false
+	},
+	"message": {
+		"enabled": true
+	},
+	"messagedeleted": {
+		"enabled": true
+	},
+	"mod": {
+		"enabled": true
+	},
+	"mods": {
+		"enabled": true
+	},
+	"notice": {
+		"enabled": true
+	},
+	"part": {
+		"enabled": true
+	},
+	"ping": {
+		"enabled": false
+	},
+	"pong": {
+		"enabled": true
+	},
+	"primepaidupgrade": {
+		"enabled": true
+	},
+	"r9kbeta": {
+		"enabled": true
+	},
+	"raided": {
+		"enabled": true
+	},
+	"reconnect": {
+		"enabled": true
+	},
+	"redeem": {
+		"enabled": true
+	},
+	"resub": {
+		"enabled": true
+	},
+	"roomstate": {
+		"enabled": true
+	},
+	"serverchange": {
+		"enabled": true
+	},
+	"slowmode": {
+		"enabled": true
+	},
+	"subgift": {
+		"enabled": true
+	},
+	"submysterygift": {
+		"enabled": true
+	},
+	"subscribers": {
+		"enabled": true
+	},
+	"subscription": {
+		"enabled": true
+	},
+	"timeout": {
+		"enabled": true
+	},
+	"unhost": {
+		"enabled": true
+	},
+	"unmod": {
+		"enabled": true
+	},
+	"vips": {
+		"enabled": true
+	},
+	"whisper": {
+		"enabled": true
+	}
+}

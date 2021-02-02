@@ -1,0 +1,58 @@
+{
+	"bot": {
+		"enabled": true,
+		"channels": ["bf_moritz", "bf_mod"],
+		"permission": "everyone",
+		"cooldown": 60000,
+		"private": false
+	},
+	"cola": {
+		"enabled": true,
+		"channels": ["bf_moritz", "bf_mod"],
+		"permission": "everyone",
+		"cooldown": 600000,
+		"private": false
+	},
+	"commands": {
+		"enabled": true,
+		"channels": ["bf_moritz"],
+		"permission": "everyone",
+		"cooldown": 60000,
+		"private": true
+	},
+	"default": {
+		"enabled": true,
+		"channels": ["bf_moritz"],
+		"permission": "everyone",
+		"cooldown": 1000,
+		"private": true
+	},
+	"sr": {
+		"enabled": true,
+		"channels": ["bf_moritz"],
+		"permission": "everyone",
+		"cooldown": 0,
+		"private": false
+	},
+	"test": {
+		"enabled": true,
+		"channels": ["bf_moritz"],
+		"permission": "mod",
+		"cooldown": 0,
+		"private": true
+	},
+	"country": {
+		"enabled": true,
+		"channels": ["bf_moritz"],
+		"permission": "everyone",
+		"cooldown": 0,
+		"private": false
+	},
+	"team": {
+		"enabled": true,
+		"channels": ["bf_moritz"],
+		"permission": "everyone",
+		"cooldown": 0,
+		"private": false
+	}
+}

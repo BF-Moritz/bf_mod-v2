@@ -1,0 +1,104 @@
+{
+	"action": {
+		"enabled": true
+	},
+	"ban": {
+		"enabled": true
+	},
+	"clear": {
+		"enabled": true
+	},
+	"color": {
+		"enabled": true
+	},
+	"commercial": {
+		"enabled": true
+	},
+	"connect": {
+		"enabled": true
+	},
+	"disconnect": {
+		"enabled": true
+	},
+	"emoteonly": {
+		"enabled": true
+	},
+	"followersonly": {
+		"enabled": true
+	},
+	"host": {
+		"enabled": true
+	},
+	"join": {
+		"enabled": true
+	},
+	"mods": {
+		"enabled": true
+	},
+	"unban": {
+		"enabled": true
+	},
+	"timeout": {
+		"enabled": true
+	},
+	"mod": {
+		"enabled": true
+	},
+	"unmod": {
+		"enabled": true
+	},
+	"vip": {
+		"enabled": true
+	},
+	"unvip": {
+		"enabled": true
+	},
+	"deletemessage": {
+		"enabled": true
+	},
+	"emoteonlyoff": {
+		"enabled": true
+	},
+	"followersonlyoff": {
+		"enabled": true
+	},
+	"part": {
+		"enabled": true
+	},
+	"ping": {
+		"enabled": true
+	},
+	"r9kbeta": {
+		"enabled": true
+	},
+	"r9kbetaoff": {
+		"enabled": true
+	},
+	"raw": {
+		"enabled": true
+	},
+	"say": {
+		"enabled": true
+	},
+	"slow": {
+		"enabled": true
+	},
+	"slowoff": {
+		"enabled": true
+	},
+	"subscribers": {
+		"enabled": true
+	},
+	"subscribersoff": {
+		"enabled": true
+	},
+	"unhost": {
+		"enabled": true
+	},
+	"vips": {
+		"enabled": true
+	},
+	"whisper": {
+		"enabled": true
+	}
+}

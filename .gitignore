@@ -105,5 +105,5 @@ dist
 
 .idea
 
-src/config/*/*.json
+credentials.json
 *.js

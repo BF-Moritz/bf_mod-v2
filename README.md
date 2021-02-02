@@ -7,13 +7,13 @@ Das UI wird noch komplett durch die [BF_Lib-Vue-v2](https://github.com/BF-Moritz
 
 Zum starten des TS Compilers und des Bots:
 
-```
+```Bash
 npm run build & npm run dev
 ```
 
 Alle JavaScript Dateien löschen:
 
-```
+```Bash
 npm run clear
 ```
 
@@ -44,3 +44,4 @@ npm run clear
 # TODOs:
 
 -   badges als array in user: `[{name, version}]`
+-   README in englisch
