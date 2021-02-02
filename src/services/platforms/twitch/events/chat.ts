@@ -12,23 +12,27 @@ export default {
 	 * @param {string} message the unparsed message
 	 * @param {boolean} self is the bot
 	 */
-	run: async (channel: string, userstate: tmi.Userstate, message: string, self: boolean) => {
+	run: async (channel: string, userstate: tmi.Userstate, message: string, self: boolean): Promise<void> => {
 		if (!services.initialized) {
 			return;
 		}
 
+		let missingUserID: boolean = false;
+
 		// Insert missing user-id for Bot
 		if (!userstate['user-id']) {
+			missingUserID = true;
 			if (self) {
-				console.error(services.bot);
-				// userstate['user-id'] = services.bot.client.globaluserstate['user-id'];
+				const botAccount = await services.db.users.getUserByTwitchName(services.bot.name);
+				if (!botAccount) return;
+				userstate['user-id'] = botAccount.twitch?.id;
 			} else {
 				console.error('missing user id', userstate);
 				return;
 			}
 		}
 
-		if (channel.substring(1) === services.streamer.name) {
+		if (channel.substring(1) === services.streamer.name && !missingUserID) {
 			await manageUser(userstate);
 		}
 

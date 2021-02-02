@@ -10,7 +10,11 @@ export function isVIP(userstate: Userstate): boolean {
 }
 
 export function getSubCount(userstate: Userstate): number {
-	if (userstate['badge-info'] !== undefined && userstate['badge-info'].subscriber) {
+	if (
+		userstate['badge-info'] !== undefined &&
+		userstate['badge-info'] !== null &&
+		userstate['badge-info'].subscriber
+	) {
 		return +userstate['badge-info'].subscriber;
 	}
 	return 0;

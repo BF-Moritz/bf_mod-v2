@@ -12,9 +12,11 @@ export default {
 		if (args && args.length <= 0) {
 			const cmds: string[] = [];
 			const names: string[] = [];
+
 			services.bot.commands.forEach((_, key) => {
 				names.push(key);
 			});
+
 			for (let name of names) {
 				if (conf[name] && (await checkPermissions(conf[name], user)) && !conf[name].private) {
 					cmds.push(name);

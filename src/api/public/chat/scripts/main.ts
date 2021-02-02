@@ -216,8 +216,6 @@ async function addMessages(params: any) {
 }
 
 async function addMessage(message: any) {
-	console.log(message);
-
 	let emotes: ChatEmoteInterface[] = [];
 
 	for (let emote in message.message.emotes) {

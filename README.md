@@ -5,6 +5,8 @@ Das UI wird noch komplett durch die [BF_Lib-Vue-v2](https://github.com/BF-Moritz
 
 ---
 
+Zuerst unter `src/config/credentials` die `credentials.dist.json` nach `credentials.json` umbennenen und Informationen ausfüllen
+
 Zum starten des TS Compilers und des Bots:
 
 ```Bash

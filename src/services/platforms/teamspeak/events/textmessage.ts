@@ -1,5 +1,5 @@
 export default {
 	run: (event: any) => {
-		console.log(event);
+		console.log('tm', event);
 	}
 };

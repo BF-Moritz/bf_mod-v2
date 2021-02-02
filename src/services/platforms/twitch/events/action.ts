@@ -17,17 +17,25 @@ export default {
 			return;
 		}
 
+		let missingUserID: boolean = false;
+
+		// Insert missing user-id for Bot
 		if (!userstate['user-id']) {
+			missingUserID = true;
 			if (self) {
-				console.error(services.bot);
-				// userstate['user-id'] = services.bot.client.globaluserstate['user-id'];
+				const botAccount = await services.db.users.getUserByTwitchName(services.bot.name);
+				if (!botAccount) return;
+				userstate['user-id'] = botAccount.twitch?.id;
 			} else {
 				console.error('missing user id', userstate);
 				return;
 			}
 		}
 
-		await manageUser(userstate);
+		if (channel.substring(1) === services.streamer.name && !missingUserID) {
+			await manageUser(userstate);
+		}
+
 		const messageObject = await services.db.twitchMessages.addMessage(
 			channel,
 			'action',

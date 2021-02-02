@@ -93,6 +93,19 @@ export class UsersDB {
 		}
 	}
 
+	async getUserByTwitchName(name: string): Promise<UserInterface | null> {
+		try {
+			const user = (await this.db.findOne({ 'twitch.name': name })) as UserInterface | undefined;
+			if (!user) {
+				return null;
+			}
+			return await this.checkUser(user);
+		} catch (err) {
+			console.error(err);
+			return null;
+		}
+	}
+
 	async getUserByDiscordID(id: string): Promise<UserInterface | null> {
 		try {
 			const user = (await this.db.findOne({ 'discord.id': id })) as UserInterface | undefined;
