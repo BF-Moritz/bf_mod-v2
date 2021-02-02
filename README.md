@@ -1,27 +1,46 @@
 # bf_mod-v2
 
-Die 2. Version meines Twitch Chat Bots
+Die 2. Version meines Twitch Chat Bots, jetzt auch komplett in Typescript.
+Das UI wird noch komplett durch die [BF_Lib-Vue-v2](https://github.com/BF-Moritz/bf_lib-vue-v2) ersetzt.
+
+---
+
+Zum starten des TS Compilers und des Bots:
+
+```
+npm run build & npm run dev
+```
+
+Alle JavaScript Dateien löschen:
+
+```
+npm run clear
+```
+
+---
 
 # Ressourcen & Links
 
 -   http://badges.twitch.tv/v1/badges/channels/118863395/display
 -   http://badges.twitch.tv/v1/badges/global/display
 -   https://fontawesome.com/cheatsheet/free/brands
--
+-   ...
 
 # services:
 
-    - [x] Twitch
-    - [x] Discord
-    - [x] Spotify
-    - [ ] Streamelements
-    - [x] Teamspeak
-    - [ ] PUBG https://documentation.pubg.com/en/status-endpoint.html
-    - [ ] Battlefield https://www.reddit.com/r/BattlefieldV/comments/9yiysd/battlefield_5_stats_api_question_any_software/
-    - [ ] OBS https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-from-websockets.466/
-    - [ ] Streamlabs
-    - [ ] Youtube
+-   [x] Twitch
+-   [x] Discord
+-   [x] Spotify
+-   [ ] Streamelements
+-   [x] Teamspeak
+-   [ ] PUBG https://documentation.pubg.com/en/status-endpoint.html
+-   [ ] Battlefield https://www.reddit.com/r/BattlefieldV/comments/9yiysd/battlefield_5_stats_api_question_any_software/
+-   [ ] OBS https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-from-websockets.466/
+-   [ ] Streamlabs
+-   [ ] Youtube
 
-# todos:
+---
 
--   badges als array in user: [{name, version}]
+# TODOs:
+
+-   badges als array in user: `[{name, version}]`

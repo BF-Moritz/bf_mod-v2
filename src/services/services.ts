@@ -11,6 +11,7 @@ import { Spotify } from './platforms/spotify/spotify';
 import Logger from '../utils/logger/logger';
 import { CredentialsInterface } from '../interfaces/config/credentials';
 import { TwitchBot } from './platforms/twitch/twitchBot';
+import { LoggerLevelType } from '../types/logger';
 
 export class Services {
 	initialized: boolean;
@@ -24,7 +25,7 @@ export class Services {
 	db: DB;
 	api: API;
 
-	constructor(loggerLevel: string, credentials: CredentialsInterface) {
+	constructor(loggerLevel: LoggerLevelType, credentials: CredentialsInterface) {
 		this.initialized = false;
 		this.logger = new Logger(loggerLevel);
 		this.bot = new TwitchBot('bot', credentials);
@@ -37,10 +38,9 @@ export class Services {
 		this.api = new API();
 	}
 
-	async initialize() {
+	async initialize(credentials: CredentialsInterface) {
 		this.logger.info('[services] initializing started.');
 
-		const credentials = await getCredentials();
 		const teamspeakGeneral = await getTeamspeakGeneral();
 		const discordGeneral = await getDiscordGeneral();
 		const twitchGeneral = await getTwitchGeneral();
@@ -80,7 +80,7 @@ export class Services {
 		}
 
 		// API & Websocket
-		await this.api.initialize();
+		await this.api.initialize(credentials);
 
 		this.initialized = true;
 		this.logger.info('[services] initializing completed.');

@@ -1,3 +1,4 @@
+import { services } from '../../app';
 import { getTwitchActions } from '../../config/twitch/twitchConfig';
 import { TwitchActionsModuleInterface } from '../../interfaces/twitch/actions';
 
@@ -7,7 +8,7 @@ export async function checkActions(eventName: string, eventModule: TwitchActions
 	}
 
 	if (!eventModule.default.hasOwnProperty('run')) {
-		console.log(`${eventName} was not implemented yet`);
+		services.logger.error(`${eventName} was not implemented yet`);
 		return false;
 		throw new Error(`${eventName} has no property 'run'!`);
 	}

@@ -4,7 +4,6 @@
 	"description": "A Bot for all plattforms",
 	"main": "app.js",
 	"scripts": {
-		"test": "test",
 		"dev": "nodemon src/app.js",
 		"build": "tsc",
 		"clear": "find src/ -name '*.js' -type f -delete"

@@ -1,34 +1,37 @@
-const levels = ['none', 'error', 'warn', 'info', 'debug'];
+import { LoggerLevelType } from '../../types/logger';
+import { parseTime } from '../miscellaneous/time';
+
+const levels: LoggerLevelType[] = ['none', 'error', 'warn', 'info', 'debug'];
 
 export default class Logger {
 	level: number;
 
-	constructor(level: string) {
+	constructor(level: LoggerLevelType) {
 		this.level = levels.findIndex((l) => l === level);
 	}
 
 	// TODO add time
 	error(...args: any) {
 		if (this.level >= 1) {
-			console.error('[ERROR]', ...args);
+			console.error('<' + parseTime() + '> [ERR]', ...args);
 		}
 	}
 
 	info(...args: any) {
 		if (this.level >= 3) {
-			console.info('[INFO]', ...args);
+			console.info('<' + parseTime() + '> [NFO]', ...args);
 		}
 	}
 
 	warn(...args: any) {
 		if (this.level >= 2) {
-			console.warn('[WARN]', ...args);
+			console.warn('<' + parseTime() + '> [WRN]', ...args);
 		}
 	}
 
 	debug(...args: any) {
 		if (this.level >= 4) {
-			console.debug('[DEBUG]', ...args);
+			console.debug('<' + parseTime() + '> [DBG]', ...args);
 		}
 	}
 }

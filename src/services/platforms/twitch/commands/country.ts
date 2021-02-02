@@ -18,6 +18,12 @@ export default {
 				}
 
 				const res = await fetch(url);
+				if (res.status !== 200) {
+					services.bot.client.say(
+						channel,
+						`@${user.twitch?.displayName || 'Missing Name'}, etwas ist schief gegangen.`
+					);
+				}
 				const json = await res.json();
 
 				const country = {
