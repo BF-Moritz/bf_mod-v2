@@ -24,6 +24,7 @@
 	},
 	"homepage": "https://github.com/BF-Moritz/bf_mod-v2#readme",
 	"dependencies": {
+		"@discordjs/opus": "^0.4.0",
 		"@mdi/font": "^5.8.55",
 		"crypto-js": "^4.0.0",
 		"discord.js": "^12.5.1",

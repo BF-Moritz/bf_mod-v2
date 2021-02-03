@@ -11,7 +11,13 @@ export interface LogChannel {
 	id: string;
 }
 
-export interface DiscordEventsInterface {}
+export interface DiscordEventsInterface {
+	[key: string]: DiscordSingleEventInterface;
+}
+
+export interface DiscordSingleEventInterface {
+	enabled: boolean;
+}
 
 export interface DiscordCommandsInterface {}
 

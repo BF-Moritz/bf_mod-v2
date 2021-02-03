@@ -39,7 +39,7 @@ export class Services {
 	}
 
 	async initialize(credentials: CredentialsInterface) {
-		this.logger.info('[services] initializing started.');
+		this.logger.info('[services] - initializing started.');
 
 		const teamspeakGeneral = await getTeamspeakGeneral();
 		const discordGeneral = await getDiscordGeneral();
@@ -47,43 +47,47 @@ export class Services {
 
 		// Twitch Bot Account
 		if (twitchGeneral.activated) {
-			this.logger.info('[services] Twitch bot');
+			this.logger.info('[services] - Twitch bot initializing');
 			await this.bot.importCommands();
 			await this.bot.importEvents();
 			await this.bot.importActions();
 			await this.bot.connect();
+			this.logger.info('[services] - Twitch bot initialized');
 		}
 
 		// Twitch Streamer Account
 		if (twitchGeneral.activated) {
-			this.logger.info('[services] Twitch streamer');
+			this.logger.info('[services] - Twitch streamer initializing');
 			await this.streamer.importCommands();
 			await this.streamer.importEvents();
 			await this.streamer.importActions();
 			await this.streamer.connect();
+			this.logger.info('[services] - Twitch streamer initialized');
 		}
 
 		// Discord Bot Account
 		if (discordGeneral.activated) {
-			this.logger.info('[services] Discord bot');
+			this.logger.info('[services] - Discord bot initializing');
+			await this.dcbot.connect(credentials);
 			await this.dcbot.importCommands();
 			await this.dcbot.importEvents();
 			await this.dcbot.importActions();
-			await this.dcbot.connect(credentials);
+			this.logger.info('[services] - Discord bot initialized');
 		}
 
 		// Teamspeak Bot
 		if (teamspeakGeneral.activated) {
-			this.logger.info('[services] Teamspeak bot');
+			this.logger.info('[services] - Teamspeak bot initializing');
 			await this.teamspeak.connect();
 			// await this.teamspeak.importEvents();
+			this.logger.info('[services] - Teamspeak bot initialized');
 		}
 
 		// API & Websocket
 		await this.api.initialize(credentials);
 
 		this.initialized = true;
-		this.logger.info('[services] initializing completed.');
+		this.logger.info('[services] - initializing completed.');
 	}
 
 	async addTwitchViewer(id: string) {

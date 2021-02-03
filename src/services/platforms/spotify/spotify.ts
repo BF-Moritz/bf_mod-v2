@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import { getCredentials } from '../../../config/credentials/credentialsConfig';
+import { sleep } from '../../../utils/miscellaneous/sleep';
 import CurrentPlayback from './api/currentPlayback';
 
 export class Spotify {
@@ -21,13 +22,24 @@ export class Spotify {
 		formData.append('grant_type', 'refresh_token');
 		formData.append('refresh_token', credentials.spotify.refresh_token);
 
-		const response = await fetch('https://accounts.spotify.com/api/token', {
+		let response = await fetch('https://accounts.spotify.com/api/token', {
 			method: 'post',
 			body: formData,
 			headers: {
 				Authorization: `Basic ${authBuffer.toString('base64')}`
 			}
 		});
+
+		while (response.status === 503) {
+			await sleep(5000);
+			response = await fetch('https://accounts.spotify.com/api/token', {
+				method: 'post',
+				body: formData,
+				headers: {
+					Authorization: `Basic ${authBuffer.toString('base64')}`
+				}
+			});
+		}
 
 		if (response.status !== 200) {
 			return new Error(`${response.statusText}, ${response.status}`);

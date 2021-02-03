@@ -6,6 +6,8 @@ import { readFiles } from '../../../utils/miscellaneous/readFiles';
 import { generateString } from '../../../utils/random/string';
 import { CredentialsInterface } from '../../../interfaces/config/credentials';
 import { DiscordImportObjectInterface } from '../../../interfaces/discord/import';
+import { checkEvents } from '../../../utils/discord/checkEvents';
+import { getDiscordEvents } from '../../../config/discord/discordConfig';
 
 const externalFilesPath = path.resolve('./src/services/platforms/discord/');
 
@@ -42,12 +44,20 @@ export class Discord {
 	}
 
 	async importEvents() {
+		const config = await getDiscordEvents();
 		await readFiles(
 			path.join(externalFilesPath, '/events'),
-			async (dir: string, file: string, params: Object) => {
+			async (dir: string, file: string, params: DiscordImportObjectInterface) => {
 				let eventName = file.substring(0, file.indexOf('.js'));
 				try {
-					services.logger.debug(eventName);
+					let eventModule = await import(path.join(dir, file));
+					if (await checkEvents(eventName, eventModule)) {
+						if (config[eventName].enabled) {
+							params.discord.client.on(eventName, eventModule.default.run);
+							params.discord.events.set(eventName, eventModule.default.run);
+							services.logger.info(`[discord] - registered event ${eventName}`);
+						}
+					}
 				} catch (err) {
 					services.logger.error(err);
 				}

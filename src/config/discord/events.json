@@ -1,0 +1,11 @@
+{
+	"guildMemberAdd": {
+		"enabled": true
+	},
+	"guildMemberRemove": {
+		"enabled": true
+	},
+	"message": {
+		"enabled": true
+	}
+}
