@@ -4,6 +4,8 @@ export interface UserInterface {
 	discord?: UserDiscordInterface;
 	country?: UserCountryInterface;
 	team?: string;
+	name?: string;
+	birthday?: UserBirthdayInterface;
 }
 
 export interface UserTwitchInterface {
@@ -26,4 +28,14 @@ export interface UserTwitchInterface {
 
 export interface UserDiscordInterface {}
 
-export interface UserCountryInterface {}
+export interface UserCountryInterface {
+	code: string;
+	name: string;
+	flag: string;
+}
+
+export interface UserBirthdayInterface {
+	day: number;
+	month: number;
+	year?: number;
+}

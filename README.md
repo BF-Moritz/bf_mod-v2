@@ -47,3 +47,19 @@ npm run clear
 
 -   badges als array in user: `[{name, version}]`
 -   README in englisch
+
+-   [ ] Activities
+
+    -   [ ] Streamelements
+        -   [ ] Follower
+        -   [ ] Donations
+    -   [ ] Subs
+    -   [ ] Cheers
+    -   [ ] Host
+    -   [ ] Raid
+    -   [ ] Stream Sessions
+        -   [ ] New Viewer
+
+-   [ ] Overlay
+    -   [ ] Alerts für Activities
+    -   [ ] Activity Feed

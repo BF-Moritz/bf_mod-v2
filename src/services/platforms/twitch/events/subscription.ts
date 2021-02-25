@@ -6,9 +6,16 @@ export default {
 		if (!services.initialized) {
 			return;
 		}
-		// TODO Log in Discord
-		// TODO Send to Webinterface
-		// TODO Trigger Alert
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'subscription',
+			group: 'sub',
+			channel,
+			username,
+			method,
+			message,
+			userstate
+		});
 	},
 	clients: ['bf_mod']
 };

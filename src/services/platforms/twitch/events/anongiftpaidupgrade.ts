@@ -3,7 +3,17 @@ import tmi from 'tmi.js';
 
 export default {
 	run: async (channel: string, username: string, userstate: tmi.Userstate) => {
-		services.logger.debug('anongiftpaidupgrade', channel, username, userstate);
+		if (!services.initialized) {
+			return;
+		}
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'anongiftpaidupgrade',
+			group: 'sub',
+			channel,
+			username,
+			userstate
+		});
 	},
 	clients: ['bf_mod']
 };

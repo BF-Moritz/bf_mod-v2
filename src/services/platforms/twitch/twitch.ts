@@ -9,6 +9,7 @@ import { services } from '../../../app';
 import { CredentialsInterface } from '../../../interfaces/config/credentials';
 import { TwitchImportObjectInterface } from '../../../interfaces/twitch/import';
 import { TwitchCommandObjectInterface } from '../../../interfaces/twitch/constructor';
+import { EventsHandler } from './handlers/eventsHandler';
 
 const externalFilesPath = path.resolve('./src/services/platforms/twitch/');
 
@@ -22,6 +23,7 @@ export class Twitch {
 	oAuth: string;
 	channels: string[];
 	client: tmi.Client;
+	eventsHandler: EventsHandler;
 
 	constructor(account: 'bot' | 'streamer', credentials: CredentialsInterface) {
 		this.commands = new Map();
@@ -33,6 +35,9 @@ export class Twitch {
 		this.name = credentials.twitch[this.account].name;
 		this.oAuth = credentials.twitch[this.account].oAuth;
 		this.channels = credentials.twitch[this.account].channels;
+
+		this.eventsHandler = new EventsHandler(10);
+		this.eventsHandler.handle();
 
 		this.client = new tmi.Client({
 			options: {

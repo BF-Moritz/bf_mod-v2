@@ -3,7 +3,18 @@ import { services } from '../../../../app';
 
 export default {
 	run: async (channel: string, username: string, deletedMessage: string, userstate: DeleteUserstate) => {
-		services.logger.debug('messagedeleted', channel, username, deletedMessage, userstate);
+		if (!services.initialized) {
+			return;
+		}
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'messagedeleted',
+			group: 'message',
+			channel,
+			username,
+			deletedMessage,
+			userstate
+		});
 	},
 	clients: ['bf_mod']
 };

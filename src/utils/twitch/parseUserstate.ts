@@ -2,11 +2,11 @@ import { Userstate } from 'tmi.js';
 import { ParsedBadgesInterface } from '../../interfaces/message';
 
 export function isBroadcaster(userstate: Userstate): boolean {
-	return userstate.badges !== undefined && userstate.badges.broadcaster === '1';
+	return userstate.badges !== undefined && userstate.badges !== null && userstate.badges.broadcaster === '1';
 }
 
 export function isVIP(userstate: Userstate): boolean {
-	return userstate.badges !== undefined && userstate.badges.vip === '1';
+	return userstate.badges !== undefined && userstate.badges !== null && userstate.badges.vip === '1';
 }
 
 export function getSubCount(userstate: Userstate): number {
@@ -21,7 +21,7 @@ export function getSubCount(userstate: Userstate): number {
 }
 
 export function getSubTier(userstate: Userstate): number {
-	if (userstate.badges !== undefined && userstate.badges.subscriber) {
+	if (userstate.badges !== undefined && userstate.badges !== null && userstate.badges.subscriber) {
 		return Math.floor(+userstate.badges.subscriber / 1000);
 	}
 	return 0;

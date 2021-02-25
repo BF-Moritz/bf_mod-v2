@@ -2,7 +2,16 @@ import { services } from '../../../../app';
 
 export default {
 	run: async (channel: string, enabled: boolean) => {
-		services.logger.debug('r9kbeta', channel, enabled);
+		if (!services.initialized) {
+			return;
+		}
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'r9kbeta',
+			group: 'chat',
+			channel,
+			enabled
+		});
 	},
 	clients: ['bf_mod']
 };

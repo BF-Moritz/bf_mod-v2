@@ -11,6 +11,7 @@ import {
 	PostMessageDataInterface
 } from '../interfaces/websockets/websockets';
 import { MessageDBInterface } from '../interfaces/message';
+import { CurrentlyPlayingInterface } from '../interfaces/spotify/currentlyPlaying.api';
 
 export class WSRouter {
 	webSockets: ws[];
@@ -62,6 +63,7 @@ export class WSRouter {
 		this.webSockets.push(ws);
 		const credentials = await getCredentials();
 		let data = {};
+
 		switch (inData.client) {
 			case 'native':
 			case 'bf-chat':
@@ -104,6 +106,14 @@ export class WSRouter {
 							apiKey: credentials.youtube.apiKey
 						}
 					}
+				};
+				break;
+
+			case 'bf-overlay':
+				data = {
+					method: 'CONNECT',
+					type: 'CONNECT',
+					params: {}
 				};
 				break;
 
@@ -244,5 +254,18 @@ export class WSRouter {
 				user: user
 			}
 		});
+	};
+
+	wsUpdateSpotifyPlayback = async (info: CurrentlyPlayingInterface) => {
+		for (let i = 0; i < this.webSockets.length; i++) {
+			let data = {
+				method: 'POST',
+				type: 'spotify',
+				params: {
+					info: info
+				}
+			};
+			send(this.webSockets[i], data);
+		}
 	};
 }

@@ -36,10 +36,13 @@ export default class CurrentPlayback {
 				if (response.status === 200) {
 					const json = await response.json();
 					this.info = json as CurrentlyPlayingInterface;
+
+					await services.api.wsRouter.wsUpdateSpotifyPlayback(this.info);
 				} else if (response.status === 204) {
 					this.info = null;
 				} else if (response.status === 401) {
 					const err = await services.spotify.refreshToken();
+
 					if (err !== null) {
 						services.logger.error('Refresh your Spotify login on: http://localhost:5000/views/auth', err);
 					}

@@ -54,5 +54,19 @@
 		"permission": "everyone",
 		"cooldown": 0,
 		"private": false
+	},
+	"name": {
+		"enabled": true,
+		"channels": ["bf_moritz"],
+		"permission": "everyone",
+		"cooldown": 0,
+		"private": false
+	},
+	"birthday": {
+		"enabled": true,
+		"channels": ["bf_moritz"],
+		"permission": "everyone",
+		"cooldown": 0,
+		"private": false
 	}
 }

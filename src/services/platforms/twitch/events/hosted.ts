@@ -6,9 +6,14 @@ export default {
 			return;
 		}
 
-		// TODO Log in Discord
-		// TODO Send to Webinterface
-		// TODO Trigger Alert
+		services.bot.eventsHandler.channel?.send({
+			event: 'hosted',
+			group: 'host',
+			channel,
+			username,
+			viewers,
+			autohost
+		});
 	},
 	clients: ['bf_mod']
 };

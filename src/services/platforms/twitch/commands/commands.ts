@@ -2,7 +2,6 @@ import { services } from '../../../../app.js';
 import { getTwitchCommands } from '../../../../config/twitch/twitchConfig.js';
 import { MessageDBInterface } from '../../../../interfaces/message.js';
 import { UserInterface } from '../../../../interfaces/user.js';
-import { sleep } from '../../../../utils/miscellaneous/sleep.js';
 import { checkPermissions } from '../../../../utils/twitch/executeCommands.js';
 
 export default {

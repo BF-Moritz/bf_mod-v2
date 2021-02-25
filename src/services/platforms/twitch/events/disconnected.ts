@@ -2,7 +2,15 @@ import { services } from '../../../../app';
 
 export default {
 	run: async (reason: string) => {
-		services.logger.debug('disconnected', reason);
+		if (!services.initialized) {
+			return;
+		}
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'disconnected',
+			group: 'connection',
+			reason
+		});
 	},
 	clients: ['bf_mod']
 };

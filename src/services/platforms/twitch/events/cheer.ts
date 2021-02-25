@@ -15,32 +15,13 @@ export default {
 			return;
 		}
 
-		// Insert missing user-id for Bot
-		if (!userstate['user-id']) {
-			if (self) {
-				console.error(services.bot);
-				// userstate['user-id'] = services.bot.client.globaluserstate['user-id'];
-			} else {
-				console.error('missing user id', userstate);
-				return;
-			}
-		}
-
-		await manageUser(userstate);
-		const messageObject = await services.db.twitchMessages.addMessage(
+		services.bot.eventsHandler.channel?.send({
+			event: 'cheer',
+			group: 'cheer',
 			channel,
-			'cheer',
-			await cheerMessage(userstate, message)
-		);
-
-		messageObject.user = await services.db.users.getUserByTwitchID(messageObject.message.twitchID);
-		await services.api.wsRouter.wsAddMessage(messageObject);
-
-		const action = services.dcbot.actions.get('twitchLogCheer');
-		if (action !== undefined) {
-			await action(messageObject);
-		}
-		// TODO Trigger Alert
+			userstate,
+			message
+		});
 	},
 	clients: ['bf_mod']
 };

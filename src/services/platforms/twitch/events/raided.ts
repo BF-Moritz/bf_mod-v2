@@ -6,9 +6,13 @@ export default {
 			return;
 		}
 
-		// TODO Log in Discord
-		// TODO Send to Webinterface
-		// TODO Trigger Alert
+		services.bot.eventsHandler.channel?.send({
+			event: 'raided',
+			group: 'host',
+			channel,
+			username,
+			viewers
+		});
 	},
 	clients: ['bf_mod']
 };

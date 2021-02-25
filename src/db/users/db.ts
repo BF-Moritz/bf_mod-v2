@@ -26,7 +26,15 @@ const userSchema = Joi.object({
 		id: Joi.number().required(),
 		roles: Joi.array()
 	}),
-	points: Joi.number().default(0)
+	points: Joi.number().default(0),
+	country: Joi.object({
+		code: Joi.string(),
+		name: Joi.string(),
+		flag: Joi.string()
+	}),
+	team: Joi.string(),
+	name: Joi.string(),
+	birthday: Joi.string()
 });
 
 export class UsersDB {

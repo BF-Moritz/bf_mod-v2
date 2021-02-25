@@ -3,7 +3,16 @@ import { services } from '../../../../app';
 
 export default {
 	run: async (sets: string, obj: EmoteObj) => {
-		services.logger.debug('emotesets:', sets, obj);
+		if (!services.initialized) {
+			return;
+		}
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'emotesets',
+			group: 'chat',
+			sets,
+			obj
+		});
 	},
 	clients: ['bf_mod']
 };

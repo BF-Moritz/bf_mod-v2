@@ -2,7 +2,15 @@ import { services } from '../../../../app';
 
 export default {
 	run: async (latency: number) => {
-		services.bot.latency = Math.floor(latency * 1000);
+		if (!services.initialized) {
+			return;
+		}
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'pong',
+			group: 'connection',
+			latency
+		});
 	},
 	clients: ['bf_mod']
 };

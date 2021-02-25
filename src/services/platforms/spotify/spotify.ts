@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { getCredentials } from '../../../config/credentials/credentialsConfig';
+import { getCredentials, setCredentials } from '../../../config/credentials/credentialsConfig';
 import { sleep } from '../../../utils/miscellaneous/sleep';
 import CurrentPlayback from './api/currentPlayback';
 
@@ -21,7 +21,6 @@ export class Spotify {
 		const formData = new URLSearchParams();
 		formData.append('grant_type', 'refresh_token');
 		formData.append('refresh_token', credentials.spotify.refresh_token);
-
 		let response = await fetch('https://accounts.spotify.com/api/token', {
 			method: 'post',
 			body: formData,
@@ -32,6 +31,7 @@ export class Spotify {
 
 		while (response.status === 503) {
 			await sleep(5000);
+
 			response = await fetch('https://accounts.spotify.com/api/token', {
 				method: 'post',
 				body: formData,
@@ -51,6 +51,7 @@ export class Spotify {
 		credentials.spotify.tokenType = token_type;
 		credentials.spotify.expiresIn = expires_in;
 		credentials.spotify.scopes = scope.split(' ');
+		await setCredentials(credentials);
 		this.isRefreshing = false;
 		return null;
 	}

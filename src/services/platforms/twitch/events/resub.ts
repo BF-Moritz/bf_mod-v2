@@ -14,9 +14,16 @@ export default {
 			return;
 		}
 
-		// TODO Log in Discord
-		// TODO Send to Webinterface
-		// TODO Trigger Alert
+		services.bot.eventsHandler.channel?.send({
+			event: 'resub',
+			group: 'sub',
+			channel,
+			username,
+			months,
+			message,
+			userstate,
+			methods
+		});
 	},
 	clients: ['bf_mod']
 };

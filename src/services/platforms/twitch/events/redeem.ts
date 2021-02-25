@@ -8,7 +8,18 @@ export default {
 		rewardType: 'highlighted-message' | 'skip-subs-mode-message' | string,
 		tags: ChatUserstate
 	) => {
-		services.logger.debug('redeem', channel, username, rewardType, tags);
+		if (!services.initialized) {
+			return;
+		}
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'redeem',
+			group: 'points',
+			channel,
+			username,
+			rewardType,
+			tags
+		});
 	},
 	clients: ['bf_mod']
 };

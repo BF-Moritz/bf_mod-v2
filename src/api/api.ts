@@ -6,6 +6,7 @@ import { APIRouter } from './apiRouter';
 import { ViewsRouter } from './viewsRouter';
 import { WSRouter } from './wsRouter';
 import path from 'path';
+import cors from 'cors';
 
 import { errorHandler, notFound } from './middlewares';
 import { CredentialsInterface } from '../interfaces/config/credentials';
@@ -25,6 +26,7 @@ export class API {
 	}
 
 	initialize = async (credentials: CredentialsInterface) => {
+		this.api.use(cors());
 		this.api.use(path.join(credentials.api.api.path, credentials.api.api.version), this.apiRouter.router);
 		this.api.ws(credentials.api.ws.path, this.wsRouter.router);
 		this.api.use(credentials.api.views.path, this.viewsRouter.router);

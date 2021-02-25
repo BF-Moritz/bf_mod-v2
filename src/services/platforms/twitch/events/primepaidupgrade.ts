@@ -3,7 +3,18 @@ import { services } from '../../../../app';
 
 export default {
 	run: async (channel: string, username: string, methods: SubMethods, userstate: PrimeUpgradeUserstate) => {
-		services.logger.debug('primepaidupgrade', channel, username, methods, userstate);
+		if (!services.initialized) {
+			return;
+		}
+
+		services.bot.eventsHandler.channel?.send({
+			event: 'primepaidupgrade',
+			group: 'sub',
+			channel,
+			username,
+			methods,
+			userstate
+		});
 	},
 	clients: ['bf_mod']
 };

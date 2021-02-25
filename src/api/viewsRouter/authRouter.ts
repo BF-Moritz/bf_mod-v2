@@ -32,7 +32,9 @@ export class AuthRouter {
 				const response = await fetch(url, {
 					method: 'post'
 				});
+
 				const { access_token, expires_in, refresh_token } = await response.json();
+
 				credentials.twitch.bot.clientAccesToken = access_token;
 				credentials.twitch.bot.clientRefreshToken = refresh_token;
 				credentials.twitch.bot.clientAccesTokenExpireDate = new Date(Date.now() + (expires_in - 60) * 1000);

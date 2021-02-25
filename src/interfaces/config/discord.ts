@@ -4,10 +4,11 @@ export interface DiscordGeneralInterface {
 }
 
 export interface DiscordChannelsInterface {
-	logChannel: LogChannel;
+	logChannel: ChannelInterface;
+	commandsChannel: ChannelInterface;
 }
 
-export interface LogChannel {
+export interface ChannelInterface {
 	id: string;
 }
 
