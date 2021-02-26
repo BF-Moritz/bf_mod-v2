@@ -50,11 +50,11 @@ npm run clear
 
 -   [ ] Activities
 
-    -   [ ] Streamelements
+    -   [x] Streamelements
         -   [ ] Follower
         -   [ ] Donations
     -   [ ] Subs
-    -   [ ] Cheers
+    -   [x] Cheers
     -   [ ] Host
     -   [ ] Raid
     -   [ ] Stream Sessions

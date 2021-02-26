@@ -2,7 +2,7 @@ import { services } from '../../../../app';
 import tmi from 'tmi.js';
 
 export default {
-	run: async (channel: string, username: string, userstate: tmi.Userstate) => {
+	run: async (channel: string, username: string, userstate: tmi.AnonSubGiftUpgradeUserstate) => {
 		if (!services.initialized) {
 			return;
 		}

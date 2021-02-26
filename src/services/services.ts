@@ -12,6 +12,7 @@ import Logger from '../utils/logger/logger';
 import { CredentialsInterface } from '../interfaces/config/credentials';
 import { TwitchBot } from './platforms/twitch/twitchBot';
 import { LoggerLevelType } from '../types/logger';
+import { StreamElements } from './platforms/streamelements/streamelements';
 
 export class Services {
 	initialized: boolean;
@@ -24,6 +25,7 @@ export class Services {
 	spotify: Spotify;
 	db: DB;
 	api: API;
+	streamElements: StreamElements;
 
 	constructor(loggerLevel: LoggerLevelType, credentials: CredentialsInterface) {
 		this.initialized = false;
@@ -36,6 +38,7 @@ export class Services {
 		this.spotify = new Spotify();
 		this.db = new DB(credentials);
 		this.api = new API();
+		this.streamElements = new StreamElements(credentials);
 	}
 
 	async initialize(credentials: CredentialsInterface) {
@@ -81,6 +84,13 @@ export class Services {
 			await this.teamspeak.connect();
 			// await this.teamspeak.importEvents();
 			this.logger.info('[services] - Teamspeak bot initialized');
+		}
+
+		if (true) {
+			this.logger.info('[services] - StreamElements initializing');
+			await this.streamElements.init();
+			// await this.teamspeak.importEvents();
+			this.logger.info('[services] - StreamElements initialized');
 		}
 
 		// API & Websocket

@@ -47,6 +47,8 @@ export default class Streaminfo {
 					const data = json.data.find((val: any) => val.user_name.toLowerCase() === key);
 					if (data) data.isLive = data.type === 'live';
 					this.info.set(key, data ? data : { isLive: false });
+					// TODO falls der channel nicht live war, aber jetzt live ist => session zurücksetzen
+					// TODO falls der channel live war, aber nicht mehr live ist => session zurücksetzen
 				});
 			}
 		}, this.timedelta);

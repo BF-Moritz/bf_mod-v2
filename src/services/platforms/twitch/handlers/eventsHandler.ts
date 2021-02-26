@@ -5,6 +5,7 @@ import { services } from '../../../../app';
 import { manageUser } from '../../../../utils/twitch/manageUser';
 import { chatMessage, cheerMessage } from '../../../../utils/twitch/messages';
 import { executeCommands } from '../../../../utils/twitch/executeCommands';
+import { ActivityInterface } from '../../../../interfaces/activities';
 
 export class EventsHandler {
 	channel: Channel | null;
@@ -45,6 +46,12 @@ export class EventsHandler {
 					break;
 				case 'connection':
 					await this.handleConnection(event);
+					break;
+				case 'follower':
+					await this.handleFollower(event);
+					break;
+				case 'donation':
+					await this.handleDonation(event);
 					break;
 				default:
 					console.log('missing handler', event);
@@ -128,6 +135,17 @@ export class EventsHandler {
 			console.error('missing user id', userstate);
 			return;
 		}
+		const activity = await services.db.activities.addActivity(channel, 'cheer', {
+			amount: userstate.bits,
+			gifted: false,
+			message: message,
+			name: userstate['display-name'] || null,
+			sender: null,
+			tier: 0,
+			upgrade: null
+		});
+
+		// TODO send activity => api
 
 		await manageUser(userstate);
 		const messageObject = await services.db.twitchMessages.addMessage(
@@ -147,6 +165,38 @@ export class EventsHandler {
 
 	async handleSub(event: EventsChannelInterface) {
 		services.logger.debug('handler', event);
+		let name: string | null = null;
+		switch (event.event) {
+			case 'giftpaidupgrade':
+			case 'primepaidupgrade':
+			case 'anongiftpaidupgrade':
+				const activity = await services.db.activities.addActivity(event.channel, event.event, {
+					amount: 1,
+					gifted: false,
+					message: event.message || null,
+					name: event.userstate?.['display-name'] || null,
+					sender: null,
+					tier: 0,
+					upgrade: event.event === 'primepaidupgrade' ? 'prime' : 'gift'
+				});
+				// TODO trigger alert
+				break;
+
+			case 'resub':
+			case 'subscription':
+				// TODO entry in activity db
+				// TODO trigger alert
+				break;
+
+			case 'subgift':
+				name = event.userstate.displayName;
+			case 'submysterygift':
+				// TODO entry in activity db
+				// TODO trigger alert
+				break;
+			default:
+				break;
+		}
 	}
 
 	async handleMod(event: EventsChannelInterface) {
@@ -177,6 +227,19 @@ export class EventsHandler {
 
 	async handleHost(event: EventsChannelInterface) {
 		services.logger.debug('handler', event);
+		switch (event.event) {
+			case 'hosted':
+			case 'raided':
+				// TODO entry in activity db
+				// TODO trigger alert
+				break;
+			case 'hosting':
+			case 'unhost':
+				// TODO set status
+				break;
+			default:
+				break;
+		}
 	}
 
 	async handleChannel(event: EventsChannelInterface) {
@@ -224,6 +287,30 @@ export class EventsHandler {
 			if (authToken !== null) {
 				services.bot.client.whisper(from, authToken);
 			}
+		}
+	}
+
+	async handleFollower(event: EventsChannelInterface) {
+		switch (event.event) {
+			case 'follower-latest':
+				// TODO entry in activity db
+				// TODO trigger alert
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	async handleDonation(event: EventsChannelInterface) {
+		switch (event.event) {
+			case 'tip-latest':
+				// TODO entry in activity db
+				// TODO trigger alert
+				break;
+
+			default:
+				break;
 		}
 	}
 }

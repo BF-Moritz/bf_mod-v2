@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { ICollection, IMonkManager } from 'monk';
+import { ICollection, IMonkManager, InsertResult } from 'monk';
 import { ActivityInterface, ActivityObjectInterface } from '../../interfaces/activities';
 import { CredentialsInterface } from '../../interfaces/config/credentials';
 
@@ -19,7 +19,11 @@ export class TwitchActivitiesDB {
 		this.db = db.get(credentials.dbs.twitch_activities.name);
 	}
 
-	async addactivity(channel: string, type: string, activity: ActivityInterface) {
+	async addActivity(
+		channel: string,
+		type: string,
+		activity: ActivityInterface
+	): Promise<InsertResult<ActivityObjectInterface> | null> {
 		try {
 			const activityObject: ActivityObjectInterface = {
 				channel: channel,

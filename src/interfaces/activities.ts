@@ -8,4 +8,12 @@ export interface ActivityObjectInterface {
 	date: Date;
 }
 
-export interface ActivityInterface {}
+export interface ActivityInterface {
+	name: string | null;
+	sender: string | null;
+	message: string | null;
+	amount: number;
+	tier: number;
+	gifted: boolean;
+	upgrade: null | 'prime' | 'gift';
+}

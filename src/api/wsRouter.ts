@@ -127,11 +127,6 @@ export class WSRouter {
 		}
 	};
 
-	/**
-	 *	Gets a number of Messages from the Messages DB
-	 * @param {WebSocket} ws
-	 * @param {Object} params
-	 */
 	wsGetMessages = async (ws: ws, params: GetMessagesDataInterface): Promise<void> => {
 		let count = 50;
 		let index = ((await services.db.twitchMessages.countMessages()) || 0) - 1;
