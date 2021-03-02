@@ -13,6 +13,7 @@ import { CredentialsInterface } from '../interfaces/config/credentials';
 import { TwitchBot } from './platforms/twitch/twitchBot';
 import { LoggerLevelType } from '../types/logger';
 import { StreamElements } from './platforms/streamelements/streamelements';
+import { TwitchState } from './platforms/twitch/twitchState';
 
 export class Services {
 	initialized: boolean;
@@ -26,6 +27,7 @@ export class Services {
 	db: DB;
 	api: API;
 	streamElements: StreamElements;
+	twitchState: TwitchState;
 
 	constructor(loggerLevel: LoggerLevelType, credentials: CredentialsInterface) {
 		this.initialized = false;
@@ -39,6 +41,7 @@ export class Services {
 		this.db = new DB(credentials);
 		this.api = new API();
 		this.streamElements = new StreamElements(credentials);
+		this.twitchState = new TwitchState();
 	}
 
 	async initialize(credentials: CredentialsInterface) {

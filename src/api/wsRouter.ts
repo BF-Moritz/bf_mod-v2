@@ -27,6 +27,7 @@ export class WSRouter {
 				switch (data.method) {
 					case 'CONNECT':
 						await this.wsConnect(ws, data.params);
+
 						break;
 					case 'GET':
 						switch (data.type) {
@@ -63,6 +64,8 @@ export class WSRouter {
 		this.webSockets.push(ws);
 		const credentials = await getCredentials();
 		let data = {};
+
+		services.logger.info(`${inData.client} connected`);
 
 		switch (inData.client) {
 			case 'native':
@@ -205,12 +208,17 @@ export class WSRouter {
 		await services.api;
 	};
 
-	wsAddViewer = async (viewer: string) => {
-		// TODO add viewer to viewer list and send whole list to all websockets
-	};
-
-	wsRemoveViewer = async (viewer: string) => {
-		// TODO remove viewer from viewer list and send whole list to all websockets
+	wsUpdateViewer = async (viewer: String[]) => {
+		for (let i = 0; i < this.webSockets.length; i++) {
+			let data = {
+				method: 'POST',
+				type: 'viewer',
+				params: {
+					viewer: viewer
+				}
+			};
+			send(this.webSockets[i], data);
+		}
 	};
 
 	wsAddMessage = async (message: MessageDBInterface) => {

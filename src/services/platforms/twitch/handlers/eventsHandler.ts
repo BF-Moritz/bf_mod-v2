@@ -244,6 +244,20 @@ export class EventsHandler {
 
 	async handleChannel(event: EventsChannelInterface) {
 		services.logger.debug('handler', event);
+		let viewer;
+		switch (event.event) {
+			case 'join':
+				viewer = services.twitchState.addViewer(event.username);
+				services.api.wsRouter.wsUpdateViewer(viewer);
+				break;
+			case 'part':
+				viewer = services.twitchState.addViewer(event.username);
+				services.api.wsRouter.wsUpdateViewer(viewer);
+				break;
+
+			default:
+				break;
+		}
 	}
 
 	async handlePoints(event: EventsChannelInterface) {
