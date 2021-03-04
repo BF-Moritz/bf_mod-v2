@@ -14,6 +14,7 @@ import { TwitchBot } from './platforms/twitch/twitchBot';
 import { LoggerLevelType } from '../types/logger';
 import { StreamElements } from './platforms/streamelements/streamelements';
 import { TwitchState } from './platforms/twitch/twitchState';
+import BTTV from './platforms/twitch/api/bttv/bttv';
 
 export class Services {
 	initialized: boolean;
@@ -28,6 +29,7 @@ export class Services {
 	api: API;
 	streamElements: StreamElements;
 	twitchState: TwitchState;
+	bttv: BTTV;
 
 	constructor(loggerLevel: LoggerLevelType, credentials: CredentialsInterface) {
 		this.initialized = false;
@@ -42,6 +44,7 @@ export class Services {
 		this.api = new API();
 		this.streamElements = new StreamElements(credentials);
 		this.twitchState = new TwitchState();
+		this.bttv = new BTTV();
 	}
 
 	async initialize(credentials: CredentialsInterface) {
@@ -90,10 +93,18 @@ export class Services {
 		}
 
 		if (true) {
+			// TODO
 			this.logger.info('[services] - StreamElements initializing');
 			await this.streamElements.init();
 			// await this.teamspeak.importEvents();
 			this.logger.info('[services] - StreamElements initialized');
+		}
+
+		if (true) {
+			// TODO
+			this.logger.info('[services] - BTTV initializing');
+			await this.bttv.start();
+			this.logger.info('[services] - BTTV initialized');
 		}
 
 		// API & Websocket

@@ -10,7 +10,7 @@ export default {
 				if (user === undefined || user._id === undefined) return;
 				const dbUser = await services.db.users.getUserByID(user._id);
 				if (dbUser === null) return;
-				dbUser.team = team;
+				dbUser.team = team.toLowerCase();
 				await services.db.users.updateUser(dbUser);
 			} catch (err) {
 				services.logger.error(err);

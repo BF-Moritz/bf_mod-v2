@@ -44,7 +44,7 @@ export default {
 		} else {
 			services.bot.client.say(
 				channel,
-				`@${user.twitch?.name} Bitte gib "!birthday DD.MM.YYY" oder "!birthday DD.MM." ein.`
+				`@${user.twitch?.name} Bitte gib "!birthday DD.MM.YYYY" oder "!birthday DD.MM." ein.`
 			);
 		}
 	},

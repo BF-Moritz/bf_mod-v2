@@ -76,7 +76,9 @@ export class WSRouter {
 					params: {
 						settings: {
 							apiKey: credentials.youtube.apiKey,
-							twitchAccounts: [credentials.twitch.streamer.name, credentials.twitch.bot.name]
+							twitchAccounts: [credentials.twitch.streamer.name, credentials.twitch.bot.name],
+							bttvGlobalEmotes: services.bttv.globalEmotes,
+							bttvUserEmotes: services.bttv.userEmotes
 						}
 					}
 				};
@@ -106,7 +108,9 @@ export class WSRouter {
 					type: 'CONNECT',
 					params: {
 						settings: {
-							apiKey: credentials.youtube.apiKey
+							apiKey: credentials.youtube.apiKey,
+							bttvGlobalEmotes: services.bttv.globalEmotes,
+							bttvUserEmotes: services.bttv.userEmotes
 						}
 					}
 				};

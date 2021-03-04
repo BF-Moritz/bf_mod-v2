@@ -63,3 +63,10 @@ npm run clear
 -   [ ] Overlay
     -   [ ] Alerts für Activities
     -   [ ] Activity Feed
+
+BTTV
+
+meine userID:
+
+personal emotes: https://api.betterttv.net/3/users/<userID>?limited=false&personal=false
+global emotes: https://api.betterttv.net/3/cached/emotes/global

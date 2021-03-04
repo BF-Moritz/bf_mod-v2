@@ -26,6 +26,7 @@
 	"dependencies": {
 		"@discordjs/opus": "^0.4.0",
 		"@mdi/font": "^5.8.55",
+		"axios": "^0.21.1",
 		"bf_package-channels": "^1.0.0",
 		"cors": "^2.8.5",
 		"crypto-js": "^4.0.0",

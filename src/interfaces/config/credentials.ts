@@ -103,6 +103,10 @@ export interface PubgInterface {
 	playerID: string;
 }
 
+export interface BTTVInterface {
+	userID: String;
+}
+
 export interface CredentialsInterface {
 	discord: DiscordInterface;
 	twitch: TwitchInterface;
@@ -113,4 +117,5 @@ export interface CredentialsInterface {
 	teamspeak: TeamspeakInterface;
 	spotify: SpotifyInterface;
 	pubg: PubgInterface;
+	bttv: BTTVInterface;
 }
