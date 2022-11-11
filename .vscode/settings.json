@@ -1,0 +1,6 @@
+{
+    "prettier.documentSelectors": [
+        "*ts"
+    ],
+    "vetur.format.defaultFormatter.ts": "prettier-tslint"
+}

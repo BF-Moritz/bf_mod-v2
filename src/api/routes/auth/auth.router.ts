@@ -2,6 +2,7 @@ import express from 'express';
 import { services } from '../../../app';
 import { getCredentials, setCredentials } from '../../../config/credentials/credentialsConfig';
 import request, { Response, Request } from 'request';
+import fetch from 'node-fetch';
 
 const authRouter = express.Router();
 
@@ -11,12 +12,28 @@ authRouter.get('/', async (req: express.Request, res: express.Response, next: ex
 		const response = [
 			{
 				name: 'twitch',
+				base_url: 'https://id.twitch.tv/oauth2/authorize',
+				url_params: {
+					response_type: 'code',
+					client_id: credentials.twitch.bot.clientID,
+					scope: credentials.twitch.bot.scopes
+				},
+				redirect: 'redirect_uri',
 				url: `https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=${
 					credentials.twitch.bot.clientID
-				}&redirect_uri=http://localhost:5000/views/auth/twitch&scope=${credentials.twitch.bot.scopes.join(' ')}`
+				}&redirect_uri=http://localhost:5000/api/v1/auth/twitch&scope=${credentials.twitch.bot.scopes.join(
+					' '
+				)}`
 			},
 			{
 				name: 'spotify',
+				base_url: 'https://accounts.spotify.com/authorize',
+				url_params: {
+					response_type: 'code',
+					client_id: credentials.spotify.clientID,
+					scope: credentials.spotify.scopes
+				},
+				redirect: 'redirect_uri',
 				url: `https://accounts.spotify.com/authorize?response_type=code&client_id=${
 					credentials.spotify.clientID
 				}&scope=${credentials.spotify.scopes.join(' ')}&redirect_uri=http://localhost:5000/api/v1/auth/spotify`
